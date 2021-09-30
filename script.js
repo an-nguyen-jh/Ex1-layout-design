@@ -1,4 +1,4 @@
-function toggleNavbar() {
+function toggle(id) {
   const collapseNav = document.getElementById("collapse-nav");
 
   if (collapseNav.classList.contains("toggle")) {
@@ -9,4 +9,12 @@ function toggleNavbar() {
 }
 
 const toggleBtn = document.getElementById("collapse-btn");
-toggleBtn.addEventListener("click", toggleNavbar);
+const infoBtn = document.getElementById("collapse-info");
+
+toggleBtn.addEventListener("click", () => {
+  toggleNavbar("collapse-nav");
+});
+
+// infoBtn.addEventListener("click", () =>{
+//   toggleNavbar()
+// })

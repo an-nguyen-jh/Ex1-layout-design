@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Layout Design</title>
-    <link rel="stylesheet" href="./style.css" />
-    <link rel="stylesheet" href="./normalize.css" />
+    <link rel="stylesheet" href="./nomalize.css" />
+    <link rel="stylesheet" href="style.css" />
+
     <script
       src="https://kit.fontawesome.com/4cceba3d3f.js"
       crossorigin="anonymous"
@@ -32,13 +33,13 @@
       </nav>
       <div></div>
     </header>
-    <main>
-      <div class="main-content">
+    <main class="main-container d-flex-column">
+      <div class="main-content d-flex-column">
         <div class="small-line">
           <img src="./public/greyLine.svg" alt="line" />
         </div>
 
-        <h1>trying, greater</h1>
+        <h1 class="header">trying, greater</h1>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
           deleniti rerum error aspernatur dolores? Suscipit vero eveniet tempora
@@ -55,11 +56,223 @@
         </div>
       </div>
     </main>
-    <section class="section-container">
-      <div></div>
-      <div></div>
+    <!-- content section -->
+    <section class="section-container overlap-main">
+      <div class="container">
+        <div class="arrow-container col-3"></div>
+        <div class="col-9 section-content-wrapper">
+          <div
+            class="section-color-content d-flex-column bg-main white-text col-4"
+          >
+            <h2 class="header">BRIGHT AS ORANGE</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
+              quaerat facilis ab, quo, saepe aspernatur ad eaque dicta rem
+              commodi hic consequatur, expedita cum nihil dolor veniam placeat
+              blanditiis laborum.
+            </p>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat
+              odio et ipsum sequi, autem repellendus voluptatibus optio
+              necessitatibus cumque laborum, fugit harum! Natus atque animi odio
+              aperiam accusamus assumenda odit.
+            </p>
+          </div>
+          <div class="d-flex-column col-8 section-content-right">
+            <div>
+              <img class="section-img" src="./public/sub-img.png" alt="" />
+            </div>
+
+            <div class="section-color-content d-flex-column">
+              <h2 class="header">finally a layout that blows your head off</h2>
+              <p class="grey-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga,
+                id. Maiores id recusandae ullam? Id animi porro nulla error
+                quia!
+              </p>
+              <div class="section-social-media">
+                <img src="./public/twitter.svg" alt="" />
+                <span class="grey-text">tweet something fun</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section-info f-wrap">
+        <div class="col-12">
+          <h2 class="header grey-text">melbourne, australia</h2>
+        </div>
+        <!-- <div class="d-flex col-12"> -->
+        <div class="col-6">
+          <p class="grey-text section-paragraph" style="font-size: 1.1rem">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam
+            molestiae fugiat in reiciendis nostrum distinctio rem, consectetur
+            saepe minus, numquam fuga blanditiis aperiam illo tenetur sapiente
+            quo velit ab voluptatum? Lorem ipsum, dolor sit amet consectetur
+            adipisicing elit.
+          </p>
+        </div>
+        <div class="col-5">
+          <p class="grey-text section-paragraph">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut quas
+            fugiat nisi esse totam et quo dolor quisquam. Consectetur autem
+            dicta labore animi doloribus corporis commodi facere praesentium
+            tempore dignissimos? Lorem ipsum dolor sit amet consectetur,
+            adipisicing elit. Iure minima, earum quia quam illo cumque harum
+            quod suscipit provident cum laboriosam deleniti quibusdam
+            reprehenderit id reiciendis est, ipsam dolorem ducimus?
+          </p>
+        </div>
+
+        <div class="col-6">
+          <p class="grey-text section-paragraph">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut quas
+            fugiat nisi esse totam et quo dolor quisquam. Consectetur autem
+            dicta labore animi doloribus corporis commodi facere praesentium
+            tempore dignissimos? Lorem ipsum dolor sit amet consectetur,
+            adipisicing elit. Iure minima, earum quia quam illo cumque harum
+            quod suscipit provident cum laboriosam deleniti quibusdam
+            reprehenderit id reiciendis est, ipsam dolorem ducimus?
+          </p>
+        </div>
+        <div class="col-5">
+          <p class="grey-text section-paragraph">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut quas
+            fugiat nisi esse totam et quo dolor quisquam. Consectetur autem
+            dicta labore animi doloribus corporis commodi facere praesentium
+            tempore dignissimos? Lorem ipsum dolor sit amet consectetur,
+            adipisicing elit. Iure minima, earum quia quam illo cumque harum
+            quod suscipit provident cum laboriosam deleniti quibusdam
+            reprehenderit id reiciendis est, ipsam dolorem ducimus?
+          </p>
+        </div>
+
+        <!-- </div> -->
+      </div>
     </section>
-    <section></section>
+    <section>
+      <img class="image-section" src="./public/sub-bg.png" alt="" />
+    </section>
+    <!-- info section -->
+    <section class="info-section-container overlap-image-section">
+      <div class="info-section-head d-flex f-wrap">
+        <div
+          class="
+            info-section-color-content
+            d-flex-column
+            bg-main
+            white-text
+            col-4
+          "
+        >
+          <h1 class="header">World & such</h1>
+        </div>
+        <div class="col-4">
+          <img
+            src="./public/avatar.png"
+            alt="avartar"
+            class="info-section-image"
+          />
+        </div>
+        <div class="col-4"></div>
+      </div>
+      <div class="info-section-color-content bg-main d-flex f-wrap">
+        <div class="col-6">
+          <p class="white-text section-paragraph">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut quas
+            fugiat nisi esse totam et quo dolor quisquam. Consectetur autem
+            dicta labore animi doloribus corporis commodi facere praesentium
+            tempore dignissimos? Lorem ipsum dolor sit amet consectetur,
+            adipisicing elit. Iure minima, earum quia quam illo cumque harum
+            quod suscipit provident cum laboriosam deleniti quibusdam
+            reprehenderit id reiciendis est, ipsam dolorem ducimus?
+          </p>
+        </div>
+        <div class="col-5">
+          <p class="white-text section-paragraph">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut quas
+            fugiat nisi esse totam et quo dolor quisquam. Consectetur autem
+            dicta labore animi doloribus corporis commodi facere praesentium
+            tempore dignissimos? Lorem ipsum dolor sit amet consectetur,
+            adipisicing elit. Iure minima, earum quia quam illo cumque harum
+            quod suscipit provident cum laboriosam deleniti quibusdam
+            reprehenderit id reiciendis est, ipsam dolorem ducimus?
+          </p>
+        </div>
+        <div class="col-6">
+          <p class="white-text section-paragraph">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut quas
+            fugiat nisi esse totam et quo dolor quisquam. Consectetur autem
+            dicta labore animi doloribus corporis commodi facere praesentium
+            tempore dignissimos? Lorem ipsum dolor sit amet consectetur,
+            adipisicing elit. Iure minima, earum quia quam illo cumque harum
+            quod suscipit provident cum laboriosam deleniti quibusdam
+            reprehenderit id reiciendis est, ipsam dolorem ducimus? Lorem ipsum
+            dolor sit amet, consectetur adipisicing elit. Reiciendis earum
+            obcaecati similique in beatae qui nam assumenda ad veniam aperiam?
+          </p>
+        </div>
+        <div class="col-5">
+          <p class="white-text section-paragraph">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut quas
+            fugiat nisi esse totam et quo dolor quisquam. Consectetur autem
+            dicta labore animi doloribus corporis commodi facere praesentium
+            tempore dignissimos? Lorem ipsum dolor sit amet consectetur,
+            adipisicing elit?
+          </p>
+        </div>
+      </div>
+      <div class="info-section-form">
+        <h1 class="header white-text">TAKE ACTION</h1>
+        <form class="d-flex f-wrap">
+          <input type="text" name="name" id="name" placeholder="Name" />
+          <input
+            type="text"
+            name="phone"
+            id="phone"
+            placeholder="Contact phone"
+          />
+          <input type="text" name="email" id="email" placeholder="Email" />
+          <button class="white-text">Sign Up</button>
+        </form>
+      </div>
+      <div class="info-section-image-bg"></div>
+      <div class="container overlap-info-section-image-bg">
+        <div class="col-9 section-content-wrapper">
+          <div
+            class="section-color-content d-flex-column bg-main white-text col-4"
+          >
+            <h2 class="header">Ohh this is nice</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
+              quaerat facilis ab, quo, saepe aspernatur ad eaque dicta rem
+              commodi hic consequatur, expedita cum nihil dolor veniam placeat
+              blanditiis laborum.
+            </p>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat
+              odio et ipsum sequi, autem repellendus voluptatibus optio
+              necessitatibus cumque laborum, fugit harum! Natus atque animi odio
+              aperiam accusamus assumenda odit.
+            </p>
+          </div>
+          <div class="d-flex-column col-8">
+            <div>
+              <img class="section-img" src="./public/sub-img2.png" alt="" />
+            </div>
+
+            <div class="section-color-content d-flex-column">
+              <h2 class="header">the end is night, weel footer anyway</h2>
+              <p class="grey-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga,
+                id. Maiores id recusandae ullam? Id animi porro nulla error
+                quia!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <footer></footer>
   </body>
   <script src="./script.js"></script>
