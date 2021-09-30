@@ -12,7 +12,7 @@ const toggleBtn = document.getElementById("collapse-btn");
 const infoBtn = document.getElementById("collapse-info");
 
 toggleBtn.addEventListener("click", () => {
-  toggleNavbar("collapse-nav");
+  toggle("collapse-nav");
 });
 
 // infoBtn.addEventListener("click", () =>{

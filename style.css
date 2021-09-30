@@ -121,6 +121,9 @@ header {
   .vertical-logo {
     display: block;
   }
+  .title {
+    font-size: 3rem;
+  }
 }
 
 /*====================================== main ======================*/
@@ -344,6 +347,39 @@ header {
     width: 300px;
   }
 }
+/*====================================footer ================================*/
+
+.footer {
+  background-color: hsl(0, 0%, 20%);
+}
+.footer-link-group {
+  width: 50%;
+}
+.footer-link-group ul {
+  margin-left: 20px;
+  list-style-type: none;
+}
+.footer-link-group a {
+  text-decoration: none;
+}
+.direction-title {
+  color: var(--mainColor);
+  margin: 20px;
+}
+
+.footer p {
+  padding: 20px;
+  text-align: center;
+}
+@media only screen and (min-width: 768px) {
+  .footer > div {
+    margin-left: var(--marginLeft);
+  }
+  .footer-link-group {
+    width: 20%;
+  }
+}
+
 /*==============support class ===================*/
 .d-flex {
   display: flex;
@@ -368,7 +404,7 @@ header {
   background-color: var(--mainColor);
 }
 
-.header {
+.title {
   text-transform: uppercase;
   font-weight: 400;
   margin-bottom: 20px;
