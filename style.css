@@ -404,7 +404,7 @@ header {
   background-color: transparent;
   border: 1px solid white;
   padding: 10px 30px;
-  margin: 5px;
+  margin: 5px 5px 5px 0;
 }
 
 .overlap-info-section-image-bg {
@@ -426,6 +426,9 @@ header {
   .info-section-form input {
     margin: 5px;
   }
+  .info-section-form input:first-child {
+    margin-left: 0;
+  }
 
   #name {
     width: 25%;
@@ -435,6 +438,11 @@ header {
   }
   #email {
     width: 30%;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  #submit-btn {
+    margin: 5px;
   }
 }
 /*====================================footer ================================*/
