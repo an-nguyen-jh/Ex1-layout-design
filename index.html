@@ -16,7 +16,7 @@
   <body>
     <header>
       <nav class="navbar">
-        <div class="mobile-navbar">
+        <div class="mobile-navbar white-text">
           <div class="homepage-logo">
             TRA<span class="orange-char">N</span>S
           </div>
@@ -29,12 +29,14 @@
           <li><a>Projects</a></li>
           <li><a>Contact</a></li>
         </ul>
-        <div class="vertical-logo">TRA<span class="orange-char">N</span>S</div>
+        <div class="vertical-logo white-text">
+          TRA<span class="orange-char">N</span>S
+        </div>
       </nav>
       <div></div>
     </header>
     <main class="main-container d-flex-column">
-      <div class="main-content d-flex-column">
+      <div class="main-content d-flex-column j-content-space-between">
         <div class="small-line">
           <img src="./public/greyLine.svg" alt="line" />
         </div>
@@ -57,7 +59,7 @@
       </div>
     </main>
     <!-- content section -->
-    <section class="section-container overlap-main">
+    <section class="section-container d-flex-column overlap-main">
       <div class="d-flex">
         <div class="arrow-container col-3">
           <div class="d-flex">
@@ -73,7 +75,7 @@
             </div>
           </div>
         </div>
-        <div class="col-9 section-content-wrapper">
+        <div class="col-9 d-flex-column section-content-wrapper">
           <div
             class="section-color-content d-flex-column bg-main white-text col-4"
           >
@@ -115,7 +117,7 @@
           </div>
         </div>
       </div>
-      <div class="section-info f-wrap">
+      <div class="section-info f-wrap d-flex-column">
         <div class="col-12">
           <h2 class="title grey-text">melbourne, australia</h2>
         </div>
@@ -171,7 +173,7 @@
       <img class="image-section" src="./public/sub-bg.png" alt="" />
     </section>
     <!-- info section -->
-    <section class="info-section-container overlap-image-section">
+    <section class="info-section-container d-flex-column overlap-image-section">
       <div class="info-section-head d-flex f-wrap">
         <div
           class="
@@ -254,42 +256,57 @@
         </form>
       </div>
       <div class="info-section-image-bg"></div>
-      <div class="container overlap-info-section-image-bg">
-        <div class="col-9 section-content-wrapper">
-          <div
-            class="section-color-content d-flex-column bg-main white-text col-4"
-          >
-            <h2 class="title">Ohh this is nice</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
-              quaerat facilis ab, quo, saepe aspernatur ad eaque dicta rem
-              commodi hic consequatur, expedita cum nihil dolor veniam placeat
-              blanditiis laborum.
-            </p>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat
-              odio et ipsum sequi, autem repellendus voluptatibus optio
-              necessitatibus cumque laborum, fugit harum! Natus atque animi odio
-              aperiam accusamus assumenda odit.
-            </p>
-          </div>
-          <div class="d-flex-column col-8 section-content-right">
-            <div>
-              <img class="section-img" src="./public/sub-img2.png" alt="" />
-            </div>
-
-            <div class="section-sub-content d-flex-column">
-              <h2 class="title">the end is night, weel footer anyway</h2>
-              <p class="grey-text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga,
-                id. Maiores id recusandae ullam? Id animi porro nulla error
-                quia!
+      <div
+        class="d-flex overlap-info-section-image-bg"
+        style="justify-content: flex-start"
+      >
+        <div class="col-10">
+          <div class="d-flex-column section-content-wrapper">
+            <div
+              class="
+                section-color-content
+                d-flex-column
+                bg-main
+                white-text
+                col-4
+              "
+            >
+              <h2 class="title">Ohh this is nice</h2>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
+                quaerat facilis ab, quo, saepe aspernatur ad eaque dicta rem
+                commodi hic consequatur, expedita cum nihil dolor veniam placeat
+                blanditiis laborum.
               </p>
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat
+                odio et ipsum sequi, autem repellendus voluptatibus optio
+                necessitatibus cumque laborum, fugit harum! Natus atque animi
+                odio aperiam accusamus assumenda odit.
+              </p>
+            </div>
+            <div class="d-flex-column col-8 section-content-right">
+              <div>
+                <img class="section-img" src="./public/sub-img2.png" alt="" />
+              </div>
+
+              <div
+                class="section-sub-content d-flex-column"
+                style="margin-bottom: 10vh"
+              >
+                <h2 class="title">the end is night, weel footer anyway</h2>
+                <p class="grey-text">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga,
+                  id. Maiores id recusandae ullam? Id animi porro nulla error
+                  quia!
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+    <!-- footer -->
     <footer class="footer d-flex f-wrap">
       <div>
         <div class="col-12 d-flex f-wrap">
