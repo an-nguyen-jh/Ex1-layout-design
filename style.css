@@ -153,7 +153,6 @@ header {
 .collapse-button {
   cursor: pointer;
   font-size: 1.5rem;
-  float: right;
   height: max-content;
   margin-right: 20px;
 }
@@ -368,9 +367,9 @@ header {
   min-height: 100vh;
 }
 
-/* .info-section-head {
-    height: auto;
-  } */
+.info-section-head > div {
+  width: 100%;
+}
 
 .overlap-image-section {
   position: relative;
@@ -426,16 +425,21 @@ header {
   .overlap-info-section-image-bg {
     margin-top: -20vh;
   }
+
   .info-section-form input {
     margin: 5px;
   }
+
   .info-section-form input:first-child {
     margin-left: 0;
   }
+
   .info-section-head {
     height: 50vh;
   }
-
+  .info-section-head > div {
+    width: 50%;
+  }
   #name {
     width: 25%;
   }
@@ -449,6 +453,9 @@ header {
 @media only screen and (min-width: 1024px) {
   #submit-btn {
     margin: 5px;
+  }
+  .info-section-head > div {
+    width: 33.3333%;
   }
 }
 /*====================================footer ================================*/
