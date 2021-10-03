@@ -79,6 +79,9 @@ body {
 }
 
 @media only screen and (min-width: 768px) {
+  body {
+    font-size: 16px;
+  }
   /* For desktop: */
   .col-1 {
     width: 8.33%;
@@ -365,9 +368,9 @@ header {
   min-height: 100vh;
 }
 
-.info-section-head {
-  min-height: 50vh;
-}
+/* .info-section-head {
+    height: auto;
+  } */
 
 .overlap-image-section {
   position: relative;
@@ -428,6 +431,9 @@ header {
   }
   .info-section-form input:first-child {
     margin-left: 0;
+  }
+  .info-section-head {
+    height: 50vh;
   }
 
   #name {
