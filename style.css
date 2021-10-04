@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+/*========================================== main config ========================================*/
 body {
   font-size: 14px;
   font-family: Arial, Helvetica, sans-serif;
@@ -10,6 +11,25 @@ body {
   --mainColor: hsl(26, 99%, 46%);
   --secondaryColor: hsl(0, 5%, 10%);
   background-color: white;
+}
+
+h2 {
+  margin: 30px 0;
+}
+
+h1 {
+  font-size: 3rem;
+  line-height: 1.15;
+}
+
+h2 {
+  font-size: 2.3rem;
+  line-height: 1.15;
+  margin: 30px 0 20px 0;
+}
+
+p {
+  line-height: 1.65;
 }
 
 /*==============support class ===================*/
@@ -34,6 +54,9 @@ body {
   justify-content: space-between;
 }
 
+.j-content-space-around {
+  justify-content: space-around;
+}
 .f-d-row {
   flex-direction: row;
 }
@@ -50,8 +73,7 @@ body {
 
 .title {
   text-transform: uppercase;
-  font-weight: 400;
-  margin-bottom: 20px;
+  font-weight: 300;
 }
 
 .white-text {
@@ -79,9 +101,6 @@ body {
 }
 
 @media only screen and (min-width: 768px) {
-  body {
-    font-size: 16px;
-  }
   /* For desktop: */
   .col-1 {
     width: 8.33%;
@@ -226,16 +245,16 @@ header {
 }
 
 @media only screen and (min-width: 1400px) {
-  .title {
+  /* .title {
     font-size: 3rem;
-  }
+  } */
 }
 
 /*====================================== main ======================*/
 .hero-section {
   background-image: url("./public/bg.png");
   width: 100%;
-  height: 130vh;
+  height: 135vh;
   position: relative;
   padding: 35vh 0;
 }
@@ -267,9 +286,9 @@ header {
   padding-bottom: 10vh;
 }
 
-.overlap-main {
+.overlap-hero-section {
   position: relative;
-  margin-top: -30vh;
+  margin-top: -40vh;
 }
 
 .intro-section__arrow {
@@ -296,18 +315,14 @@ header {
   padding: 40px;
 }
 
-.intro-section__main-content p {
-  padding: 10px 0;
-}
-
 .intro-section__sub-content__image {
   object-fit: cover;
   width: 100%;
-  height: 30vh;
+  height: 40vh;
 }
 
 .intro-section__sub-content {
-  height: 100vh;
+  min-height: 80vh;
 }
 
 .intro-section__sub-content__social {
@@ -326,8 +341,14 @@ header {
   align-items: center;
 }
 
-.intro-section__paragraph {
+.intro-section__paragraph,
+.intro-section__main-paragraph {
   padding: 20px 20px 20px 0;
+}
+
+.intro-section__main-paragraph {
+  font-size: 1.1rem;
+  color: #b6b6b6;
 }
 
 @media only screen and (min-width: 768px) {
@@ -337,7 +358,9 @@ header {
   .intro-section__content {
     width: 100%;
     flex-direction: row;
+    min-height: 85vh;
   }
+
   .intro-section__main-content,
   .intro-section__sub-content {
     height: auto;
@@ -345,7 +368,7 @@ header {
   .intro-section__detail {
     flex-direction: row;
     padding: 0;
-    margin-top: 20px;
+    margin-top: 40px;
     align-items: flex-start;
   }
 }
@@ -360,7 +383,7 @@ header {
 .image-section {
   object-fit: cover;
   width: 100%;
-  height: 80vh;
+  height: 87vh;
 }
 
 .info-section {
@@ -370,10 +393,13 @@ header {
 .info-section__head > div {
   width: 100%;
 }
-
+.info-section__head h1 {
+  font-size: 60px;
+  line-height: 1.2;
+}
 .overlap-image-section {
   position: relative;
-  margin-top: -80vh;
+  margin-top: -87vh;
 }
 .info-section__image {
   object-fit: cover;
@@ -396,6 +422,8 @@ header {
   padding: 10px;
   margin: 5px 0;
   width: 100%;
+  border-radius: 5px;
+  height: 60px;
 }
 
 #submit-btn {
@@ -403,6 +431,8 @@ header {
   border: 1px solid white;
   padding: 10px 30px;
   margin: 5px 5px 5px 0;
+  width: 150px;
+  height: 60px;
 }
 
 @media only screen and (min-width: 768px) {
@@ -436,13 +466,13 @@ header {
     width: 50%;
   }
   #name {
-    width: 25%;
+    width: 200px;
   }
   #phone {
-    width: 25%;
+    width: 200px;
   }
   #email {
-    width: 30%;
+    width: 300px;
   }
 }
 @media only screen and (min-width: 1024px) {
@@ -457,15 +487,18 @@ header {
 
 .footer {
   background-color: hsl(0, 0%, 20%);
+  padding-top: 8vh;
+  font-size: 0.85rem;
 }
-.footer__link-group {
+/* .footer__link-group {
   width: 50%;
-}
+} */
 .footer__link-group ul {
   margin-left: 20px;
   list-style-type: none;
 }
 .footer__link-group a {
+  line-height: 2;
   text-decoration: none;
 }
 .footer__navigation {
@@ -474,14 +507,17 @@ header {
 }
 
 .footer p {
-  padding: 20px;
+  padding: 50px 20px;
+  line-height: 2;
   text-align: center;
 }
+
 @media only screen and (min-width: 768px) {
+  .footer {
+    min-height: 65vh;
+  }
   .footer > div {
     margin-left: var(--marginLeft);
-  }
-  .footer__link-group {
-    width: 20%;
+    max-width: 60%;
   }
 }
