@@ -16,11 +16,11 @@
   <body>
     <header>
       <nav class="navbar">
-        <div class="mobile-navbar white-text">
-          <div class="homepage-logo">
+        <div class="navbar__mobie white-text">
+          <div class="navbar__homepage-logo">
             TRA<span class="orange-char">N</span>S
           </div>
-          <i class="fas fa-bars collapse-button" id="collapse-btn"></i>
+          <i class="fas fa-bars navbar__collapse-button" id="collapse-btn"></i>
         </div>
 
         <ul class="toggle" id="collapse-nav">
@@ -29,15 +29,15 @@
           <li><a>Projects</a></li>
           <li><a>Contact</a></li>
         </ul>
-        <div class="vertical-logo white-text">
+        <div class="navbar__homepage-logo--vertical white-text">
           TRA<span class="orange-char">N</span>S
         </div>
       </nav>
       <div></div>
     </header>
-    <main class="main-container d-flex-column">
-      <div class="main-content d-flex-column j-content-space-between">
-        <div class="small-line">
+    <main class="hero-section d-flex-column">
+      <div class="hero-section__content d-flex-column j-content-space-between">
+        <div class="hero-section__small-line">
           <img src="./public/greyLine.svg" alt="line" />
         </div>
         <h1 class="title">trying, greater</h1>
@@ -52,31 +52,37 @@
           </div>
           <img src="./public/rightArrow.svg" alt="arrow" />
         </div>
-        <div class="small-line">
+        <div class="hero-section__small-line">
           <img src="./public/greyLine.svg" alt="line" />
         </div>
       </div>
     </main>
     <!-- content section -->
-    <section class="section-container d-flex-column overlap-main">
+    <section class="intro-section d-flex-column overlap-main">
       <div class="d-flex">
-        <div class="arrow-container col-3">
+        <div class="intro-section__arrow col-3">
           <div class="d-flex">
-            <div class="circle-border">
+            <div class="intro-section__arrow__circle-border">
               <img
                 src="./public/rightArrow.svg"
                 alt="arrow"
                 style="transform: rotate(90deg)"
               />
             </div>
-            <div class="circle-border">
+            <div class="intro-section__arrow__circle-border">
               <img src="./public/rightArrowOrange.svg" alt="arrow" />
             </div>
           </div>
         </div>
-        <div class="col-9 d-flex-column section-content-wrapper">
+        <div class="col-9 d-flex-column intro-section__content">
           <div
-            class="section-color-content d-flex-column bg-main white-text col-4"
+            class="
+              intro-section__main-content
+              d-flex-column
+              bg-main
+              white-text
+              col-4
+            "
           >
             <div>
               <h2 class="title">BRIGHT AS ORANGE</h2>
@@ -94,19 +100,23 @@
               </p>
             </div>
           </div>
-          <div class="d-flex-column col-8 section-content-right">
+          <div class="d-flex-column col-8 intro-section__sub-content">
             <div>
-              <img class="section-img" src="./public/sub-img.png" alt="" />
+              <img
+                class="intro-section__sub-content__image"
+                src="./public/sub-img.png"
+                alt=""
+              />
             </div>
 
-            <div class="section-sub-content d-flex-column">
+            <div class="intro-section__sub-content__info d-flex-column">
               <h2 class="title">finally a layout that blows your head off</h2>
               <p class="grey-text">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga,
                 id. Maiores id recusandae ullam? Id animi porro nulla error
                 quia!
               </p>
-              <div class="section-social-media">
+              <div class="intro-section__sub-content__social">
                 <img src="./public/twitter.svg" alt="" />
                 <span class="grey-text" style="text-decoration: underline"
                   >tweet something fun</span
@@ -116,20 +126,23 @@
           </div>
         </div>
       </div>
-      <div class="section-info f-wrap d-flex-column">
+      <div class="intro-section__detail f-wrap d-flex-column">
         <div class="col-12">
           <h2 class="title grey-text">melbourne, australia</h2>
         </div>
         <!-- <div class="d-flex col-12"> -->
         <div class="col-6">
-          <p class="grey-text section-paragraph" style="font-size: 1.1rem">
+          <p
+            class="grey-text intro-section__paragraph"
+            style="font-size: 1.1rem"
+          >
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam
             molestiae fugiat in reiciendis nostrum distinctio rem, consectetur
             saepe minus, numquam fuga blanditiis aperiam illo tenetur sapiente
             quo velit ab voluptatum? Lorem ipsum, dolor sit amet consectetur
             adipisicing elit.
           </p>
-          <p class="grey-text section-paragraph">
+          <p class="grey-text intro-section__paragraph">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut quas
             fugiat nisi esse totam et quo dolor quisquam. Consectetur autem
             dicta labore animi doloribus corporis commodi facere praesentium
@@ -140,7 +153,7 @@
           </p>
         </div>
         <div class="col-5">
-          <p class="grey-text section-paragraph">
+          <p class="grey-text intro-section__paragraph">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut quas
             fugiat nisi esse totam et quo dolor quisquam. Consectetur autem
             dicta labore animi doloribus corporis commodi facere praesentium
@@ -150,7 +163,7 @@
             reprehenderit id reiciendis est, ipsam dolorem ducimus?
           </p>
 
-          <p class="grey-text section-paragraph">
+          <p class="grey-text intro-section__paragraph">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut quas
             fugiat nisi esse totam et quo dolor quisquam. Consectetur autem
             dicta labore animi doloribus corporis commodi facere praesentium
@@ -168,10 +181,10 @@
       <img class="image-section" src="./public/sub-bg.png" alt="" />
     </section>
     <!-- info section -->
-    <section class="info-section-container d-flex-column overlap-image-section">
-      <div class="info-section-head d-flex f-wrap">
+    <section class="info-section d-flex-column overlap-image-section">
+      <div class="info-section__head d-flex f-wrap">
         <div
-          class="info-section-color-content d-flex-column bg-main white-text"
+          class="intro-section__main-content d-flex-column bg-main white-text"
         >
           <h1 class="title">World & such</h1>
         </div>
@@ -179,13 +192,13 @@
           <img
             src="./public/avatar.png"
             alt="avartar"
-            class="info-section-image"
+            class="info-section__image"
           />
         </div>
       </div>
-      <div class="info-section-color-content bg-main d-flex f-wrap">
+      <div class="intro-section__main-content bg-main d-flex f-wrap">
         <div class="col-6">
-          <p class="white-text section-paragraph">
+          <p class="white-text intro-section__paragraph">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut quas
             fugiat nisi esse totam et quo dolor quisquam. Consectetur autem
             dicta labore animi doloribus corporis commodi facere praesentium
@@ -194,7 +207,7 @@
             quod suscipit provident cum laboriosam deleniti quibusdam
             reprehenderit id reiciendis est, ipsam dolorem ducimus?
           </p>
-          <p class="white-text section-paragraph">
+          <p class="white-text intro-section__paragraph">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut quas
             fugiat nisi esse totam et quo dolor quisquam. Consectetur autem
             dicta labore animi doloribus corporis commodi facere praesentium
@@ -207,7 +220,7 @@
           </p>
         </div>
         <div class="col-5">
-          <p class="white-text section-paragraph">
+          <p class="white-text intro-section__paragraph">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut quas
             fugiat nisi esse totam et quo dolor quisquam. Consectetur autem
             dicta labore animi doloribus corporis commodi facere praesentium
@@ -217,7 +230,7 @@
             reprehenderit id reiciendis est, ipsam dolorem ducimus?
           </p>
 
-          <p class="white-text section-paragraph">
+          <p class="white-text intro-section__paragraph">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut quas
             fugiat nisi esse totam et quo dolor quisquam. Consectetur autem
             dicta labore animi doloribus corporis commodi facere praesentium
@@ -226,7 +239,7 @@
           </p>
         </div>
       </div>
-      <div class="info-section-form">
+      <div class="info-section__form">
         <h1 class="title white-text">TAKE ACTION</h1>
         <form class="d-flex f-wrap">
           <input type="text" name="name" id="name" placeholder="Name" />
@@ -240,16 +253,16 @@
           <button class="white-text" id="submit-btn">Sign Up</button>
         </form>
       </div>
-      <div class="info-section-image-bg"></div>
+      <div class="info-section__image-bg"></div>
       <div
-        class="d-flex overlap-info-section-image-bg"
+        class="d-flex overlap-info-section__image-bg"
         style="justify-content: flex-start"
       >
         <div class="col-10">
-          <div class="d-flex-column section-content-wrapper">
+          <div class="d-flex-column intro-section__content">
             <div
               class="
-                section-color-content
+                intro-section__main-content
                 d-flex-column
                 bg-main
                 white-text
@@ -270,14 +283,18 @@
                 odio aperiam accusamus assumenda odit.
               </p>
             </div>
-            <div class="d-flex-column col-8 section-content-right">
+            <div class="d-flex-column col-8 intro-section__sub-content">
               <div>
-                <img class="section-img" src="./public/sub-img2.png" alt="" />
+                <img
+                  class="intro-section__sub-content__image"
+                  src="./public/sub-img2.png"
+                  alt=""
+                />
               </div>
 
               <div
-                class="section-sub-content d-flex-column"
-                style="margin-bottom: 10vh"
+                class="intro-section__sub-content__info d-flex-column"
+                style="margin-bottom: 10vh; background-color: white"
               >
                 <h2 class="title">the end is night, weel footer anyway</h2>
                 <p class="grey-text">
@@ -295,8 +312,8 @@
     <footer class="footer d-flex f-wrap">
       <div>
         <div class="col-12 d-flex f-wrap">
-          <div class="footer-link-group">
-            <div class="direction-title">Quicklinks</div>
+          <div class="footer__link-group">
+            <div class="footer__navigation">Quicklinks</div>
             <ul>
               <li><a class="white-text" href="">Footer link</a></li>
               <li><a class="white-text" href="">Footer link</a></li>
@@ -306,8 +323,8 @@
               <li><a class="white-text" href="">Footer link</a></li>
             </ul>
           </div>
-          <div class="footer-link-group">
-            <div class="direction-title">Our profile</div>
+          <div class="footer__link-group">
+            <div class="footer__navigation">Our profile</div>
             <ul>
               <li><a class="white-text" href="">Footer link</a></li>
               <li><a class="white-text" href="">Footer link</a></li>
@@ -317,8 +334,8 @@
               <li><a class="white-text" href="">Footer link</a></li>
             </ul>
           </div>
-          <div class="footer-link-group">
-            <div class="direction-title">Infomation</div>
+          <div class="footer__link-group">
+            <div class="footer__navigation">Infomation</div>
             <ul>
               <li><a class="white-text" href="">Footer link</a></li>
               <li><a class="white-text" href="">Footer link</a></li>
@@ -327,8 +344,8 @@
               <li><a class="white-text" href="">Footer link</a></li>
             </ul>
           </div>
-          <div class="footer-link-group">
-            <div class="direction-title">Courses</div>
+          <div class="footer__link-group">
+            <div class="footer__navigation">Courses</div>
             <ul>
               <li><a class="white-text" href="">Footer link</a></li>
               <li><a class="white-text" href="">Footer link</a></li>
@@ -339,8 +356,8 @@
               <li><a class="white-text" href="">Footer link</a></li>
             </ul>
           </div>
-          <div class="footer-link-group">
-            <div class="direction-title">Publication</div>
+          <div class="footer__link-group">
+            <div class="footer__navigation">Publication</div>
             <ul>
               <li><a class="white-text" href="">Footer link</a></li>
               <li><a class="white-text" href="">Footer link</a></li>
