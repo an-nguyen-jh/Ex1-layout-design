@@ -6,18 +6,19 @@ function toggle(id) {
 function shinkNavbarWhenScroll() {
   //determine event when webpage scroll
   const navbar = document.getElementById("navbar");
+  //console.log(window.innerHeight, window.innerWidth);
+  //set the break point when the navbar change background
   if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
     navbar.style.backgroundColor = "#323339";
+    // navbar.style.lineHeight = "60px";
   } else {
     navbar.style.backgroundColor = "transparent";
+    // navbar.style.lineHeight = "80px";
   }
 }
 
 const toggleBtn = document.getElementById("collapse-btn");
-//const infoBtn = document.getElementById("collapse-info");
 
-toggleBtn.addEventListener("click", () => {
-  toggle("collapse-nav");
-});
+toggleBtn.addEventListener("click", toggle);
 
 window.addEventListener("scroll", shinkNavbarWhenScroll);

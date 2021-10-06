@@ -191,6 +191,7 @@ header {
 }
 .navbar {
   line-height: 60px;
+  transition: background-color 0.25s ease-out;
 }
 
 .navbar__mobie {
@@ -397,6 +398,7 @@ header {
   .hero-section__content {
     margin-left: var(--marginLeft);
     padding: 0;
+    max-width: 500px;
   }
 }
 
@@ -612,6 +614,10 @@ header {
   height: 60px;
 }
 
+.finish-content {
+  width: 100%;
+}
+
 @media only screen and (min-width: 768px) {
   .info-section__form input {
     padding: 5px;
@@ -694,6 +700,9 @@ header {
 
   .overlap-info-section__image-bg {
     margin-top: -20vh;
+  }
+  .finish-content {
+    width: 83.33%;
   }
 }
 /*====================================footer ================================*/
