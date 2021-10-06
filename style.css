@@ -113,6 +113,7 @@ a {
 
 .title {
   text-transform: uppercase;
+  width: 100%;
 }
 
 .white-text {
@@ -386,6 +387,13 @@ header {
 }
 
 @media only screen and (min-width: 768px) {
+  /* .hero-section__content {
+    margin-left: var(--marginLeft);
+    padding: 0;
+  } */
+}
+
+@media only screen and (min-width: 1024px) {
   .hero-section__content {
     margin-left: var(--marginLeft);
     padding: 0;
@@ -427,8 +435,7 @@ header {
   max-width: 1400px;
 }
 
-.intro-section__main-content > h1,
-.intro-section__main-content > h2,
+.intro-section__main-content > h1 .intro-section__main-content > h2,
 .intro-section__main-content > p {
   max-width: 400px;
 }
@@ -478,9 +485,9 @@ header {
 }
 
 @media only screen and (min-width: 768px) {
-  .intro-section {
+  /* .intro-section {
     margin-left: var(--marginLeft);
-  }
+  } */
   .intro-section__content {
     width: 100%;
     flex-direction: row;
@@ -493,7 +500,7 @@ header {
   }
   .intro-section__detail {
     flex-direction: row;
-    padding: var(--smallScreenPadding) 0;
+    padding: var(--smallScreenPadding);
     align-items: flex-start;
   }
   .intro-section__detail-col {
@@ -503,6 +510,9 @@ header {
 }
 
 @media only screen and (min-width: 1024px) {
+  .intro-section {
+    margin-left: var(--marginLeft);
+  }
   .intro-section {
     min-height: 100vh;
     padding-bottom: 10vh;
@@ -520,7 +530,9 @@ header {
     max-width: 750px;
   }
 
-  .intro-section__main-content > h1,
+  .intro-section__main-content > h1 {
+    max-width: 400px;
+  }
   .intro-section__main-content > h2,
   .intro-section__main-content > p {
     max-width: 300px;
@@ -604,9 +616,9 @@ header {
   .info-section__form input {
     padding: 5px;
   }
-  .info-section {
+  /* .info-section {
     margin-left: var(--marginLeft);
-  }
+  } */
 
   .info-section__form input:first-child {
     padding-left: 0;
@@ -634,6 +646,9 @@ header {
   }
 }
 @media only screen and (min-width: 1024px) {
+  .info-section {
+    margin-left: var(--marginLeft);
+  }
   .image-section {
     visibility: visible;
   }
@@ -708,18 +723,21 @@ header {
 }
 
 @media only screen and (min-width: 768px) {
-  .footer {
+  /* .footer {
     padding: 0;
-  }
-  .footer > div {
+  } */
+  /* .footer > div {
     margin-left: var(--marginLeft);
-  }
+  } */
   .footer p {
     text-align: left;
   }
 }
 
 @media only screen and (min-width: 1024px) {
+  .footer > div {
+    margin-left: var(--marginLeft);
+  }
   .footer > div {
     min-height: 65vh;
     padding-top: 8vh;
