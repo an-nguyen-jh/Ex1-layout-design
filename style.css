@@ -263,6 +263,7 @@ header {
   display: inline-block;
   height: 80px;
   font-family: "Raleway", sans-serif;
+  width: 100%;
   /* transition: border 0.5s linear; */
   /*property duration function*/
 }
@@ -290,10 +291,9 @@ header {
 .navbar li a:hover,
 .navbar li a:focus {
   border-bottom: 2px solid var(--mainColor, orange);
+  background-color: var(--footerTextColor);
 }
 
-.navbar li a:hover {
-}
 /* 
 .navbar__collapse-list.toggle {
   height: 0;
@@ -355,9 +355,20 @@ header {
   .navbar__homepage-logo--vertical {
     display: block;
   }
+
+  .navbar li a:hover,
+  .navbar li a:focus {
+    background-color: transparent;
+  }
 }
 
-@media only screen and (min-width: 1400px) {
+@media only screen and (min-width: 1024px) {
+  /* .title {
+    font-size: 3rem;
+  } */
+}
+
+@media only screen and (min-width: 1280px) {
   /* .title {
     font-size: 3rem;
   } */
@@ -369,7 +380,7 @@ header {
   width: 100%;
   height: 135vh;
   position: relative;
-  padding: 35vh 0;
+  padding: 25% 0;
 }
 
 .hero-section__content {
@@ -377,6 +388,7 @@ header {
   color: var(--whiteColor);
   padding: var(--smallScreenPadding);
   height: 50vh;
+  max-height: 400px;
 }
 
 .hero-section__content h1 {
@@ -395,6 +407,9 @@ header {
 }
 
 @media only screen and (min-width: 1024px) {
+  .hero-section {
+    max-height: 1200px;
+  }
   .hero-section__content {
     margin-left: var(--marginLeft);
     padding: 0;
@@ -402,6 +417,8 @@ header {
   }
 }
 
+@media only screen and (min-width: 1280px) {
+}
 /* ============================ section =======================*/
 .intro-section {
   min-height: 100vh;
@@ -439,13 +456,12 @@ header {
 
 .intro-section__main-content > h1 .intro-section__main-content > h2,
 .intro-section__main-content > p {
-  max-width: 400px;
+  max-width: 100%;
 }
 
 .intro-section__sub-content__image {
   object-fit: cover;
   width: 100%;
-  height: 40vh;
 }
 
 .intro-section__sub-content__social {
@@ -456,6 +472,7 @@ header {
 .intro-section__sub-content__info {
   width: 100%;
   padding: var(--smallScreenPadding);
+  background-color: var(--whiteColor);
 }
 
 .container {
@@ -487,13 +504,9 @@ header {
 }
 
 @media only screen and (min-width: 768px) {
-  /* .intro-section {
-    margin-left: var(--marginLeft);
-  } */
   .intro-section__content {
     width: 100%;
     flex-direction: row;
-    min-height: 85vh;
   }
 
   .intro-section__main-content,
@@ -509,21 +522,22 @@ header {
     margin-right: 14px;
     margin-bottom: 0;
   }
+  .intro-section__sub-content__image {
+    max-height: 40vh;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
   .intro-section {
     margin-left: var(--marginLeft);
-  }
-  .intro-section {
+
     min-height: 100vh;
-    padding-bottom: 10vh;
+    padding-bottom: 5%;
+  }
+  .intro-section__content {
+    max-height: 800px;
   }
 
-  .intro-section__arrow {
-    display: inline-block;
-    width: 20% !important;
-  }
   .intro-section__main-content,
   .intro-section__sub-content__info {
     padding: var(--bigScreenPadding);
@@ -545,6 +559,16 @@ header {
   }
   .intro-section__detail {
     margin-top: 50px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .intro-section__content {
+    min-height: 85vh;
+  }
+  .intro-section__arrow {
+    display: inline-block;
+    width: 20% !important;
   }
 }
 /* ====================================== section Info =======================================*/
@@ -657,6 +681,7 @@ header {
   }
   .image-section {
     visibility: visible;
+    /* max-height: 800px; */
   }
 
   .image-section img {
@@ -671,6 +696,10 @@ header {
   #submit-btn {
     margin: 5px;
   }
+  .info-section__head {
+    max-height: 450px;
+  }
+
   .info-section__head > div {
     width: 33.3333%;
   }
@@ -696,13 +725,29 @@ header {
   }
   .info-section__image-bg {
     display: block;
+    max-height: 810px;
   }
 
   .overlap-info-section__image-bg {
     margin-top: -20vh;
   }
+}
+
+@media only screen and (min-width: 1280px) {
+  .info-section__head {
+    max-height: 540px;
+  }
   .finish-content {
     width: 83.33%;
+  }
+  .info-section__image-bg {
+    display: block;
+    max-height: 900px;
+  }
+}
+@media screen and (min-width: 1920px) {
+  .info-section__head {
+    max-height: 540px;
   }
 }
 /*====================================footer ================================*/
@@ -755,4 +800,7 @@ header {
   .footer p {
     padding: 50px 0;
   }
+}
+
+@media only screen and (min-width: 1280px) {
 }
