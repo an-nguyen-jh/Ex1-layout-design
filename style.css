@@ -26,7 +26,13 @@ body {
 
   background-color: var(--whiteColor);
 }
-
+a {
+  text-decoration: none;
+}
+*:hover,
+*:focus {
+  outline: 0px;
+}
 h1,
 h2 {
   font-family: "Raleway", sans-serif;
@@ -209,6 +215,7 @@ header {
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 2px;
+  cursor: pointer;
   margin: auto;
 }
 
@@ -231,12 +238,10 @@ header {
   height: calc(100vh - 60px);
   opacity: 1;
   width: 100%;
-  /* height: 0;
-  opacity: 0; */
-  /* animation: spanNavbar 0.5s ease-out 1 forwards; */
+  animation: spanNavbar 0.5s ease-out 1 forwards;
   /*name duration timing-function delay iteration-count direction fill-mode; */
 }
-/* 
+
 @keyframes spanNavbar {
   0% {
     height: 0;
@@ -246,11 +251,7 @@ header {
     height: calc(100vh - 60px);
     opacity: 1;
   }
-} */
-
-/* .navbar__collapse-list.toggle {
-  transition: collapseNavbar 0.5s ease-in backwards;
-} */
+}
 
 .navbar li {
   display: block;
@@ -267,8 +268,8 @@ header {
   height: 80px;
   font-family: "Raleway", sans-serif;
   width: 100%;
-  /* transition: border-bottom var(--animationSpeed) linear,
-    background-color var(--animationSpeed) ease-out; */
+  transition: border-bottom var(--animationSpeed) linear,
+    background-color var(--animationSpeed) ease-out;
   /*property duration function*/
 }
 
@@ -298,12 +299,11 @@ header {
   background-color: var(--footerTextColor);
 }
 
-/* 
 .navbar__collapse-list.toggle {
   height: 0;
   opacity: 0;
   animation: collapseNavbar 0.5s ease-out 1 forwards;
-  /*name duration timing-function delay iteration-count direction fill-mode; 
+  /*name duration timing-function delay iteration-count direction fill-mode; */
 }
 
 @keyframes collapseNavbar {
@@ -315,9 +315,8 @@ header {
     height: 0;
     opacity: 0;
   }
-} */
-
-.toggle {
+}
+.navbar__underline {
   display: none;
 }
 
@@ -327,12 +326,13 @@ header {
   position: absolute;
   right: 30px;
   top: 60px;
+  cursor: pointer;
   white-space: nowrap;
   font-size: 1.5rem;
   font-weight: 700;
   transform: rotate(90deg) translate(50%, -50%);
   letter-spacing: 2px;
-  transition: all var(--animationSpeed) linear;
+  transition: all var(--animationSpeed, 0.25s) linear;
 }
 
 @media only screen and (min-width: 768px) {
@@ -343,10 +343,11 @@ header {
     display: none;
   }
 
-  .navbar ul {
+  .navbar__collapse-list {
     margin-left: var(--marginLeft);
     background-color: transparent;
-    height: 80px;
+    height: 80px !important;
+    opacity: 1 !important;
   }
 
   .navbar li {
@@ -361,10 +362,58 @@ header {
   .navbar__homepage-logo--vertical {
     display: block;
   }
-
+  .navbar li a {
+    border-bottom: 0;
+    background-color: transparent;
+  }
   .navbar li a:hover,
   .navbar li a:focus {
     background-color: transparent;
+    border-bottom: 0 solid transparent;
+  }
+
+  .navbar__underline {
+    height: 2px;
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: var(--mainColor);
+    transition: all var(--animationSpeed, 0.25s) ease-in-out;
+  }
+  /* tooltip animation */
+  a[data-tooltip] {
+    position: relative;
+  }
+  /* tooltip for navigation anchor*/
+  .navbar li a[data-tooltip]::after {
+    content: attr(data-tooltip);
+    box-sizing: border-box;
+    /*position of tooltip*/
+    position: absolute;
+    z-index: 1;
+    top: 105%;
+    left: 50%;
+    margin-left: -60px;
+    /**/
+    text-transform: none;
+    word-wrap: break-word;
+    width: 120px;
+    line-height: initial;
+    display: block;
+    height: fit-content;
+    background-color: var(--secondaryColor);
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 0.6rem;
+    transform: scale(0);
+    transition: transform var(--animationSpeed) ease-out;
+  }
+
+  .navbar li a[data-tooltip]:hover::after {
+    transform: scale(1);
   }
 }
 
@@ -624,10 +673,16 @@ header {
   width: 100%;
   border-radius: 5px;
   height: 60px;
+  transition: outline var(--animationSpeed) ease-in-out;
+}
+.info-section__form input:hover,
+.info-section__form input:focus,
+.info-section__form input::selection {
+  outline: 2px solid var(--mainColor);
 }
 
 .info-section__form input::placeholder {
-  padding-left: 10px;
+  padding-left: 5px;
 }
 
 #submit-btn {
@@ -637,6 +692,14 @@ header {
   margin: 5px 5px 5px 0;
   width: 150px;
   height: 60px;
+  transition: background-color var(--animationSpeed) linear,
+    border-radius var(--animationSpeed) linear;
+}
+
+#submit-btn:hover,
+#submit-btn:focus {
+  border-radius: 10px;
+  background-color: var(--footerTextColor);
 }
 
 .finish-content {
@@ -646,10 +709,6 @@ header {
 @media only screen and (min-width: 768px) {
   .info-section__form input {
     padding: 5px;
-  }
-
-  .info-section__form input:first-child {
-    padding-left: 0;
   }
 
   .info-section__head > div {
@@ -663,8 +722,8 @@ header {
   }
   #email {
     width: 100%;
-    padding: 0;
   }
+
   #submit-btn {
     padding: 5px 0;
     width: 50%;
@@ -780,7 +839,15 @@ header {
 .footer__link-group a {
   line-height: 2;
   text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom var(--animationSpeed) linear;
 }
+
+.footer__link-group a:hover,
+.footer__link-group a:focus {
+  border-bottom: 1px solid var(--mainColor);
+}
+
 .footer__navigation {
   color: var(--mainColor);
   margin: 20px 0;
