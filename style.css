@@ -577,7 +577,7 @@ header {
 
 @media only screen and (min-width: 1920px) {
   .intro-section__content {
-    max-height: 900px;
+    max-height: 950px;
   }
 }
 /* ====================================== section Info =======================================*/
@@ -749,6 +749,9 @@ header {
   .overlap-image-section {
     position: relative;
     margin-top: max(-50vh, -38%);
+  }
+  .overlap-info-section__image-bg {
+    margin-top: -12%;
   }
 }
 
