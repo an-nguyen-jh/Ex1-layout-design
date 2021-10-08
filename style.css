@@ -30,8 +30,15 @@ body {
   font-family: "Open Sans", sans-serif;
   background-color: var(--whiteColor);
 }
+
+body.preload * {
+  animation-duration: 0s !important;
+  -webkit-animation-duration: 0s !important;
+}
+
 a {
   text-decoration: none;
+  color: inherit;
 }
 *:hover,
 *:focus {

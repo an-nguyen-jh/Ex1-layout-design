@@ -50,6 +50,11 @@ window.addEventListener("scroll", shinkNavbarWhenScroll);
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 });
+//prevent animation haburger menu in the first time load page
+setTimeout(function () {
+  document.body.className = "";
+}, 500);
+
 //F3:add event listener  fake hover with mousenter & mouseleave
 navigationLinks.forEach((item) => {
   //using position of li elements to defined position of under line
