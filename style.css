@@ -673,9 +673,9 @@ header {
   background-image: url("./public/bg.png");
   /* parallax */
   background-attachment: fixed;
-  background-position: bottom;
+  background-position: top 20% right 20%;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 200%;
 
   height: 100vh;
   display: none;
