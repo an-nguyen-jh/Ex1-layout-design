@@ -21,9 +21,6 @@
       </noscript>
     <![endif]-->
     <style>
-      table {
-        width: 100%;
-      }
       table,
       td,
       div,
@@ -35,33 +32,53 @@
         text-decoration: none;
         color: inherit;
       }
-      @media screen and (min-width: 600px) {
+      @media only screen and (max-width: 590px){
+        table{
+          font-size: 14px!important;
+        }
+        #table-container{
+          background-color: #ffffff;
+        }
+        #content{
+          width: 99% !important;
+          border-top: 10px solid #ffffff !important;
+          border-right: 0px solid #ffffff !important;
+          border-bottom: 10px solid #ffffff !important;
+          border-left: 0px solid #ffffff !important;
+        }
+        .email-image{
+          height:auto !important;
+          max-width:600px !important;
+          width: 100% !important;
+        }
+        .table-video-image{
+          float: none !important;
+          clear: both !important;
+          text-align: center !important;
+          width: 100% !important;
+        }
+        .hightlight-col{
+          display: block;
+          max-width:600px !important;
+          width: 100% !important;
+        }
       }
+      
       .ExternalClass {width: 100%;}
     </style>
   </head>
   <body
     bgcolor="#f3f3f3"
-    style="width: 100%;
-      height: 100%;
-      margin: auto 0;
-      padding: 0;
-      box-sizing: border-box;
-      word-wrap: break-word;
-      font-family: Arial, Helvetica, sans-serif;
-      color: #161616;"
+    style="width: 100%;height: 100%;margin: auto 0;padding: 0;box-sizing: border-box;word-wrap: break-word;font-family: Arial, Helvetica, sans-serif;color: #161616;"
   >
     <table
       role="presentation"
+      id="table-container"
       bgcolor="#f3f3f3"
       cellpadding="0"
       cellspacing="0"
       border="0"
-      style="width: 100%;
-        border-collapse: collapse;
-        border: 0;
-        border-spacing: 0;
-        font-family: Arial, Helvetica, sans-serif;"
+      style="width: 100%;border-collapse: collapse;border: 0;border-spacing: 0;font-family: Arial, Helvetica, sans-serif;"
     >
       <tr>
         <td align="center" style="padding: 0">
@@ -70,29 +87,16 @@
             cellpadding="0"
             cellspacing="0"
             border="0"
+            id="content"
             width="600px"
             style="background-color: #ffffff;
-              border-top: 20px solid #ffffff;
-              border-bottom: 20px solid #ffffff;
-              border-left: 30px solid #ffffff;
-              border-right: 30px solid #ffffff;
-              width: 100%;
-              max-width: 600px;
-              margin: 0 auto;"
+              border-top: 20px solid #ffffff;border-bottom: 20px solid #ffffff;border-left: 30px solid #ffffff;border-right: 30px solid #ffffff;margin: 0 auto;"
           >
             <tr>
               <td
-                border="0"
-                cellpadding="0"
-                cellspacing="0"
                 align="left"
                 width="420px"
-                style="margin: 0; width: 77.77%;
-                  text-align: left;
-                  border: 0;
-                  border-collapse: collapse;
-                  font-family: Arial, Helvetica, sans-serif;
-                  line-height: 18px;"
+                style="margin: 0; width: 77.77%;text-align: left;border: 0;border-collapse: collapse;font-family: Arial, Helvetica, sans-serif;line-height: 18px; margin:0; mso-line-height-rule: exactly;"
               >
                 IBM <b>Developer</b>
               </td>
@@ -102,10 +106,7 @@
                 align="right"
                 cellspacing="0"
                 width="120px"
-                style="margin: 0;
-                  width:23.33%;
-                  border: 0;
-                  border-collapse: collapse;"
+                style="margin: 0;width:23.33%;border: 0;border-collapse: collapse;"
               >
                 <img
                   alt="IBM"
@@ -120,9 +121,7 @@
               <td
                 align="left"
                 colspan="2"
-                style="font-family: Arial, Helvetica, sans-serif;
-                  font-size: 40px;
-                  line-height: 50px;"
+                style="font-family: Arial, Helvetica, sans-serif;font-size: 40px;line-height: 50px;margin:0; mso-line-height-rule: exactly;"
               >
                 <br />
                 2021 <br />
@@ -139,7 +138,7 @@
               <td
                 align="left"
                 colspan="2"
-                style="font-size: 20px; line-height: 26px;  font-family: Arial, Helvetica, sans-serif;"
+                style="font-size: 20px; line-height: 26px;margin:0;  font-family: Arial, Helvetica, sans-serif; mso-line-height-rule: exactly;"
               >
                 <br />
                 Announcing the 2021 Call for Code
@@ -156,6 +155,7 @@
                 <img
                   alt="CFC2021_Awards_Banner"
                   height="268px"
+                  class="email-image"
                   src="https://ci5.googleusercontent.com/proxy/sat-IROX0zO3WaO4Q0XOHLp2Zid4IHHE5_LvfCf26DZu6gIXpVBoxlcP82KrizwXl9Mj4E7bLWKWv2LuVBomoz4hXSoBJvyVtit4PtWXclVirRlJ7MSpycHjGeEPC2S1Sf8=s0-d-e1-ft#http://contentz.mkt6741.com/ra/2021/25285/10/45732791/YouTube_Thumb-600x300.jpg"
                   title="CFC2021_Awards_Banner"
                   width="535px"
@@ -167,10 +167,7 @@
               <td
                 align="left"
                 colspan="2"
-                style="color: #565656;
-                  line-height: 24px;
-                  font-size: 16px;
-                  border-collapse: collapse;  font-family: Arial, Helvetica, sans-serif;"
+                style="color: #565656;line-height: 22px;margin:0; font-size: 16px; border-collapse: collapse;  font-family: Arial, Helvetica, sans-serif; mso-line-height-rule: exactly;"
               >
                 <br />
                 <b>Live from New York, on Broadway</b>
@@ -205,12 +202,8 @@
                 winner. <br /><br /><br />
                 <table
                   role="presentation"
-                  width="300px"
-                  style=" width: 100%;
-                    max-width: 300px;
-                    border-collapse: collapse;
-                    border: 0;
-                    border-spacing: 0;"
+                  width="100%"
+                  style="width: 100%;max-width: 300px;border-collapse: collapse;border: 0;border-spacing: 0;"
                 >
                   <tr>
                     <td
@@ -219,12 +212,7 @@
                       border="0"
                       height="48px"
                       width="220px"
-                      style="border-collapse: collapse;
-                        padding-left: 16px;
-                        color: #f4f4f4;
-                        font-size: 16px;
-                        height: 48px;
-                        vertical-align: middle;"
+                      style="border-collapse: collapse;padding-left: 16px;color: #f4f4f4;font-size: 16px;height: 48px;vertical-align: middle;"
                     >
                       <a
                         href="https://developer.ibm.com/callforcode/awards/?utm_medium=Email&utm_source=Outbound&utm_content=000039JL&utm_term=10008917&utm_id=cfc2021challenge&spMailingID=45732791&spUserID=MTA1Mjk3NzkwMTE0OAS2&spJobID=2100568783&spReportId=MjEwMDU2ODc4MwS2"
@@ -239,40 +227,72 @@
                       border="0"
                       height="48px"
                       width="60px"
-                      style="border-collapse: collapse;
-                        color: #f4f4f4;
-                        width: 60px;
-                        vertical-align: middle;
-                        border-left: 1px solid #ffffff;"
+                      style="border-collapse: collapse;color: #f4f4f4;width: 60px;vertical-align: middle; border-left: 1px solid #ffffff;"
                     >
                       <img
                         src="https://ci6.googleusercontent.com/proxy/L9PHgj8cnHmTjI8I-JjW0Vx226ctvPpyhkkwkHNcBMiNDIcyJoC_5ShMwMqFvir0EyxxsWBR5fETvgmlVBtISFvxhdMRXhnUAiqkf25fyfWeIGANuh0=s0-d-e1-ft#http://contentz.mkt6741.com/ra/2021/25285/10/45732791/arrow_img.png"
                         alt="Go"
-                        style="margin-left: 20px;
-                          margin-right: 20px;"
+                        style="margin-left: 20px;margin-right: 20px;"
                         width="20px"
                         align="center"
                       />
+                   
                     </td>
                   </tr>
+                </table>
+                <br>
+                <br>
+              </td>
+            </tr>
+            <tr>
+              <td align="center" width="100%"  bgcolor="#f4f4f4" colspan="2">
+                <table
+                  role="presentation"
+                  cellspacing="0"
+                  cellpadding="0"
+                  bgcolor="#f4f4f4"
+                  style="table-layout: fixed;border-collapse: collapse;width: 100%;"
+                  width="100%;"
+                >
                   <tr>
-                    <td align="center" width="100%">
-                      <br />
-                      <br />
-                      <!-- <table
-                        role="presentation"
-                        cellspacing="0"
-                        cellpadding="0"
-                        bgcolor="#f4f4f4"
-                        style="table-layout: fixed;border-collapse: collapse;width: 100%;"
-                        width="100%;"
-                      >
+                   <td bgcolor="#f4f4f4">
+                      <table role="presentation" cellspacing='0' cellpadding="0"
+                      class="table-video-image"
+                      style="float:right; border-collapse: collapse; table-layout: fixed; width: max-content">
                         <tr>
-                          <td width="240px"></td>
-                          <td></td>
+                          <td align="center" valign="top" style="border-collapse: collapse" width="284" >
+                            <img src="https://ci5.googleusercontent.com/proxy/IsZhTMN7LWfGycyL7fl3TgRGknCBX9jTz7ru5lW4mpPNGlF9XPwVnrZzkZB0N_GCEMERxu8QwUUjIUBw16So1OrJ3KpN8n0n88gJFZJjgGllP2xtFuKm63ysibHp3aH-2w=s0-d-e1-ft#http://contentz.mkt6741.com/ra/2021/25285/10/45732791/Agrolly-Team-300x300.jpg" 
+                            alt="IBM Call for Code hightlight"
+                            align="middle" 
+                            width="284px"
+                            height="284px"
+                            style="border: 0"
+                            tabindex="0">
+                          </td>
                         </tr>
-                      </table> -->
-                    </td>
+                      </table>
+                      <table role="presentation" cellspacing='0' cellpadding="0"
+                      style="float:left; border-collapse: collapse; table-layout: fixed;width: 45%;" 
+                      width="45%"
+                      class="table-video-image">
+                      <tr>
+                        <td 
+                        style="padding:16px; font-size:16px; line-height: 22px; margin:0; font-family: Arial, Helvetica, sans-serif; color: #252525; mso-line-height-rule: exactly;"
+                        width='100%'>
+                        <b>2020 Call for Code Awards Hightlights</b> <br>
+                        <span style="color: #565656;  font-family: Arial, Helvetica, sans-serif;">
+                          Watch the best moments from the 2020 celebration of the 400,000 developers 
+                          and problem solvers from around the globe who have participated in Call for Code.
+                        </span>
+                        <br><br>
+                        <a href="https://www.ibm.com/account/reg/us-en/login?formid=urx-51116&spJobID=2100568783&spReportId=MjEwMDU2ODc4MwS2&spMailingID=45732791&eventid=newsletters&spUserID=MTA1Mjk3NzkwMTE0OAS2&lang=en_US&target=https%3A%2F%2Fdeveloper.ibm.com%2Fdwwi%2Fjsp%2Fp%2Fpostregister.jsp%3FspJobID%3D2100568783%26spReportId%3DMjEwMDU2ODc4MwS2%26spMailingID%3D45732791%26eventid%3Dnewsletters%26spUserID%3DMTA1Mjk3NzkwMTE0OAS2%26lang%3Den_US"
+                        style="margin:0; color: #78a9ff; font-size: 16px; line-height: 22px;mso-line-height-rule: exactly; text-decoration: underline;  font-family: Arial, Helvetica, sans-serif;">
+                          Watch the video
+                        </a>
+                        </td>
+                      </tr>
+                      </table>
+                    </td>                          
                   </tr>
                 </table>
               </td>
@@ -301,29 +321,16 @@
                 cellpadding="0"
                 cellspacing="0"
                 align="left"
-                style="margin: 0;
-                  text-align: left;
-                  width: 80%;
-                  max-width: 480px;
-                  border: 0;
-                  border-collapse: collapse;
-                  line-height: 18px; font-family: Arial, Helvetica, sans-serif;"
+                width="420px"
+                style="margin: 0;text-align: left;width: 77.77%;max-width: 420px;border: 0;border-collapse: collapse;line-height: 18px; mso-line-height-rule: exactly;font-family: Arial, Helvetica, sans-serif;"
               >
                 IBM <b>Developer</b>
               </td>
-              <td style="width: 100%;padding:0;font-size:0;line-height:0;">&nbsp;</td>
+              <td style="margin:0; width: 100%;padding:0;font-size:0;line-height:0;">&nbsp;</td>
               <td
-                border="0"
-                cellpadding="0"
                 align="right"
-                cellspacing="0"
-                style="
-                  margin: 0;
-                  width: 20%;
-                  max-width: 120px;
-                  border: 0;
-                  border-collapse: collapse;
-                "
+                width="420px"
+                style="margin: 0;width: 23.33%;max-width: 120px; border: 0;border-collapse: collapse; "
               >
                 <img
                   alt="IBM"
@@ -335,7 +342,7 @@
               </td>
             </tr>
             <tr>
-              <td align="left" colspan="2">
+              <td align="left" colspan="3">
                 <hr style="width: 100%; background-color: #3d3d3d; border-color: #3d3d3d; margin-top: 15px"/>
               </td>
             </tr>
@@ -343,24 +350,24 @@
               <td>
                 <br>
                 <a href="https://www.ibm.com/account/reg/us-en/login?formid=urx-51116&spJobID=2100568783&spReportId=MjEwMDU2ODc4MwS2&spMailingID=45732791&eventid=newsletters&spUserID=MTA1Mjk3NzkwMTE0OAS2&lang=en_US&target=https%3A%2F%2Fdeveloper.ibm.com%2Fdwwi%2Fjsp%2Fp%2Fpostregister.jsp%3FspJobID%3D2100568783%26spReportId%3DMjEwMDU2ODc4MwS2%26spMailingID%3D45732791%26eventid%3Dnewsletters%26spUserID%3DMTA1Mjk3NzkwMTE0OAS2%26lang%3Den_US"
-                style="color: #78a9ff; font-size: 16px; line-height: 24px; text-decoration: underline;  font-family: Arial, Helvetica, sans-serif;">
+                style="margin:0; color: #78a9ff; font-size: 16px; line-height: 22px;mso-line-height-rule: exactly; text-decoration: underline;  font-family: Arial, Helvetica, sans-serif;">
                   IBM Devoloper subscription preferances
                 </a>
                 <br>
                 <a href="https://developer.ibm.com/?spMailingID=45732791&spUserID=MTA1Mjk3NzkwMTE0OAS2&spJobID=2100568783&spReportId=MjEwMDU2ODc4MwS2"
-                style="color: #78a9ff; font-size: 16px; line-height: 24px; text-decoration: underline;  font-family: Arial, Helvetica, sans-serif;">
+                style="margin:0; color: #78a9ff; font-size: 16px; line-height: 22px;mso-line-height-rule: exactly; text-decoration: underline;  font-family: Arial, Helvetica, sans-serif;">
                   developer.ibm.com
                 </a>
               </td>
             </tr>
             <tr>
-              <td align="left" colspan="2">
+              <td align="left" colspan="3">
                 <hr style="width: 100%; background-color: #3d3d3d; border-color: #3d3d3d; margin-top: 15px"/>
               </td>
             </tr>
             <tr>
-              <td width="452px" cellspacing="0" cellpadding="0"
-              style="padding-top: 6px; font-size: 12px; line-height: 18px; color: #ffffff; letter-spacing: 0.5px;  font-family: Arial, Helvetica, sans-serif;">
+              <td width="452px" cellspacing="0" cellpadding="0" colspan="2"
+              style="padding-top: 6px; font-size: 12px; line-height: 18px; margin:0; color: #ffffff; letter-spacing: 0.5px;  font-family: Arial, Helvetica, sans-serif; mso-line-height-rule: exactly;">
               © IBM Corporation 2021. IBM®, the IBM logo, IBM Cloud®, and 
               <a href="https://www.ibm.com" style="color: #78a9ff; text-decoration: underline; font-family: Arial, Helvetica, sans-serif; ">ibm.com®</a>  
               are trademarks of 
