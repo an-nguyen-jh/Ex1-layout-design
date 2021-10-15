@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carousel Image</title>
+    <link rel="stylesheet" href="../nomalize.css" />
+    <link rel="stylesheet" href="./carousel.css" />
+  </head>
+  <body>
+    <main class="carousel-container">
+      <div class="carousel-main">
+        <button class="carousel__control carousel__control__left-btn">
+          <img
+            src="./img/left-arrow.svg"
+            class="carousel__control-image"
+            alt="Prev"
+          />
+        </button>
+        <div class="carousel__main-image-container" id="main-image"></div>
+        <button class="carousel__control carousel__control__right-btn">
+          <img
+            src="./img/right-arrow.svg"
+            alt="Next"
+            class="carousel__control-image"
+          />
+        </button>
+      </div>
+      <div class="carousel__image-list" id="image-list"></div>
+    </main>
+    <script defer src="./carousel.js"></script>
+  </body>
+</html>
