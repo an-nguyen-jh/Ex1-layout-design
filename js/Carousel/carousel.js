@@ -1,18 +1,32 @@
 const imagesLinkArray = [
-  "https://source.unsplash.com/random",
-  "https://source.unsplash.com/random",
-  "https://source.unsplash.com/random",
-  "https://source.unsplash.com/random",
-  "https://source.unsplash.com/random",
-  "https://source.unsplash.com/random",
+  "https://images.unsplash.com/photo-1545623703-583dd2364bbd?ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8NXw0NzMxNTUyfHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1577737330379-1f82737418ab?ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8N3w0NzMxNTUyfHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1570279402939-62a46724e051?ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MTB8NDczMTU1Mnx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8Mnw0NzMxNTUyfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/flagged/photo-1573763435095-2077a3fd80b0?ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MTN8NDczMTU1Mnx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1573150323599-ac3231efdbc9?ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8NTJ8NDczMTU1Mnx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
 ];
 
-const screenWidth = window.innerWidth;
-const screenHeight = window.innerHeight;
-const mainImage = document.getElementById("main-image");
-const imagesList = document.getElementById("image-list");
+const htmlNodePrototype = {
+  mainImg: (imgLink, index) =>
+    `<img class="carousel__main-image" async src="${imgLink}" data-idx="${index}" alt="Main image display"/>`,
+  imgItem: (imageLink, index) =>
+    `<img class="carousel__image-item" async src="${imageLink}" data-idx="${index}" alt="Image Item" />`,
+};
+
+const mainImagesContainer = document.getElementById("main-image-list");
+const imagesContainer = document.getElementById("image-list");
+
+const preButton = document.querySelector(
+  ".carousel__control.carousel__control__left-btn"
+);
+const nextButton = document.querySelector(
+  ".carousel__control.carousel__control__right-btn"
+);
 
 let index = 0;
+const mainImageWidth = mainImagesContainer.offsetWidth;
+
 //function to convert html to Node element
 function htmlToElement(html) {
   var template = document.createElement("template");
@@ -22,29 +36,75 @@ function htmlToElement(html) {
 }
 //========================================== Generator ==================================================//
 //generator main image & image list
-const mainImageElm = htmlToElement(`
-<img
-class="carousel__main-image"
-src="${imagesLinkArray[index]}"
-alt="Main image display"
-/>`);
+// const mainImageElm = htmlToElement(
+//   htmlNodePrototype.mainImg(imagesLinkArray[index])
+// );
 
 //create image list and display in bottom of carousel
-imagesLinkArray.forEach((imageLink) => {
-  const imageItem = htmlToElement(`
-  <img
-  class="carousel__image-item"
-  src="${imageLink}"
-  alt="Image Item"
-/>`);
-  imagesList.appendChild(imageItem);
+imagesLinkArray.forEach((imageLink, i) => {
+  const imageItem = htmlToElement(htmlNodePrototype.imgItem(imageLink, i));
+  const mainImgItem = htmlToElement(htmlNodePrototype.mainImg(imageLink, i));
+
+  mainImagesContainer.appendChild(mainImgItem);
+  imagesContainer.appendChild(imageItem);
+  imageItem.addEventListener("click", chooseImage.bind(imageItem));
 });
 
-//add first image to main image element in carousel
-mainImage.appendChild(mainImageElm);
 //========================================== Handle Event ==================================================//
 
 //create function to handle navigation Button
-function preImage() {}
+function previousImage() {
+  //S1: index equal 0 & and pre button been disable enable image
+  if (index === imagesLinkArray.length - 1) {
+    nextButton.disabled = false;
+  }
+  //S2: if index not out of range in image array we switch image to pre image in array
+  if (index > 0) {
+    //S3: decrease index of array iamge
+    index--;
+    //change width
+    mainImagesContainer.style.transform = `translateX(${
+      -mainImageWidth * index
+    }px)`;
+    //add new image
+  }
+  // disable next button
+  else {
+    preButton.disabled = true;
+  }
+}
 
-function nextImage() {}
+function nextImage() {
+  //S1: index equal 0 & and pre button been disable enable image
+  if (index === 0) {
+    preButton.disabled = false;
+  }
+
+  //S2: if index not out of range in image array we switch image to next image in array
+  if (index < imagesLinkArray.length - 1) {
+    //S3: increase index of array iamge
+    index++;
+    //change width
+    mainImagesContainer.style.transform = `translateX(${
+      -mainImageWidth * index
+    }px)`;
+    //add new image
+  }
+  // disable next button
+  else {
+    nextButton.disabled = true;
+  }
+}
+
+function chooseImage() {
+  //get store attribute in image
+  const imgIdx = this.getAttribute("data-idx");
+  mainImagesContainer.style.transform = `translateX(${
+    -mainImageWidth * imgIdx
+  }px)`;
+  //copy index
+  index = imgIdx;
+}
+
+preButton.addEventListener("click", previousImage);
+nextButton.addEventListener("click", nextImage);
