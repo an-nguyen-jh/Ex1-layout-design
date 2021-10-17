@@ -49,9 +49,13 @@ imagesLinkArray.forEach((imageLink, i) => {
   imagesContainer.appendChild(imageItem);
   imageItem.addEventListener("click", chooseImage.bind(imageItem));
 });
+//add active class to first image
+imagesContainer.firstChild.classList.add("carousel__image-active");
+preButton.disabled = true;
 
 //========================================== Handle Event ==================================================//
 
+const imagesList = document.getElementsByClassName("carousel__image-item");
 //create function to handle navigation Button
 function previousImage() {
   //S1: index equal 0 & and pre button been disable enable image
@@ -60,6 +64,7 @@ function previousImage() {
   }
   //S2: if index not out of range in image array we switch image to pre image in array
   if (index > 0) {
+    imagesList[index].classList.remove("carousel__image-active");
     //S3: decrease index of array iamge
     index--;
     //change width
@@ -67,6 +72,7 @@ function previousImage() {
       -mainImageWidth * index
     }px)`;
     //add new image
+    imagesList[index].classList.add("carousel__image-active");
   }
   // disable next button
   else {
@@ -83,12 +89,14 @@ function nextImage() {
   //S2: if index not out of range in image array we switch image to next image in array
   if (index < imagesLinkArray.length - 1) {
     //S3: increase index of array iamge
+    imagesList[index].classList.remove("carousel__image-active");
     index++;
-    //change width
+    //change width of container to do to next image
     mainImagesContainer.style.transform = `translateX(${
       -mainImageWidth * index
     }px)`;
-    //add new image
+    //at active behaviour to image in image list
+    imagesList[index].classList.add("carousel__image-active");
   }
   // disable next button
   else {
@@ -99,11 +107,15 @@ function nextImage() {
 function chooseImage() {
   //get store attribute in image
   const imgIdx = this.getAttribute("data-idx");
+  //remove active behavior
+  imagesList[index].classList.remove("carousel__image-active");
   mainImagesContainer.style.transform = `translateX(${
     -mainImageWidth * imgIdx
   }px)`;
   //copy index
   index = imgIdx;
+  //add active behavior
+  imagesList[imgIdx].classList.add("carousel__image-active");
 }
 
 preButton.addEventListener("click", previousImage);

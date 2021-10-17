@@ -3,6 +3,13 @@
 *::after {
   box-sizing: border-box;
 }
+
+:root {
+  --animationSpeed: 0.5s;
+  --bgColor: hsl(0, 0%, 5%);
+  --activeColor: hsl(212, 100%, 50%);
+}
+
 html {
   font-size: 16px;
 }
@@ -13,7 +20,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: hsl(0, 0%, 5%);
+  background-color: var(--bgColor, #0d0d0d);
 }
 a {
   text-decoration: none;
@@ -23,7 +30,7 @@ a {
 .carousel-container {
   width: 100%;
   height: 100%;
-  background-color: hsl(0, 0%, 5%);
+  background-color: var(--bgColor, #0d0d0d);
   margin: auto auto;
 }
 
@@ -38,6 +45,7 @@ a {
   width: 100%;
   height: 100%;
   display: flex;
+  transition: transform var(--animationSpeed);
 }
 
 .carousel__main-image {
@@ -56,7 +64,6 @@ a {
   border: 0px;
   top: 0;
   z-index: 2;
-  cursor: pointer;
 }
 
 .carousel__control-image {
@@ -65,15 +72,20 @@ a {
   opacity: 0.3;
   height: 30px;
 }
-.carousel__control:hover {
+
+.carousel__control:hover:not([disabled]) {
   background-color: hsla(0, 0%, 20%, 20%);
+  cursor: pointer;
 }
-.carousel__control:hover .carousel__control-image {
+
+.carousel__control:hover:not([disabled]) .carousel__control-image {
   opacity: 1;
 }
+
 .carousel__control__left-btn {
   left: 0;
 }
+
 .carousel__control__right-btn {
   right: 0;
 }
@@ -89,6 +101,20 @@ a {
   overflow-y: hidden;
 }
 
+.carousel__image-list::-webkit-scrollbar {
+  height: 10px;
+}
+
+.carousel__image-list::-webkit-scrollbar-track {
+  background-color: hsl(0, 0%, 72%);
+  border-radius: 6px;
+}
+
+.carousel__image-list::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  background-color: hsl(0, 0%, 54%);
+}
+
 .carousel__image-item {
   border: 2px solid transparent;
   max-width: 25%;
@@ -98,7 +124,7 @@ a {
 }
 
 .carousel__image-active {
-  border: 2px solid aqua;
+  border: 4px solid var(--activeColor);
 }
 
 @media only screen and (min-width: 678px) {
