@@ -106,7 +106,7 @@ a {
 }
 
 .carousel__image-list::-webkit-scrollbar-track {
-  background-color: hsl(0, 0%, 72%);
+  background-color: hsl(0, 0%, 85%);
   border-radius: 6px;
 }
 
