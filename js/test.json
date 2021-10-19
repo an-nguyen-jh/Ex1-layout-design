@@ -50,13 +50,13 @@
       "next": {
         "question": {
           "specifyFlag": "01",
-          "content": "Would you start basic learning path?"
+          "content": "Would you start beginner learning path?"
         },
         "answers": [
           { "specifyFlag": "010", "content": "OK", "next": null },
           {
             "specifyFlag": "011",
-            "content": "NO",
+            "content": "No",
             "next": {
               "question": {
                 "specifyFlag": "011",
@@ -72,11 +72,6 @@
                 }
               ]
             }
-          },
-          {
-            "specifyFlag": "012",
-            "content": "Let switch to Intermediate learning path",
-            "next": null
           }
         ]
       }

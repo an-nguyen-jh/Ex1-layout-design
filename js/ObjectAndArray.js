@@ -121,7 +121,7 @@ class DecisionNode {
     const answersObj = [];
     for (let i = 0; i < answers.length; i++) {
       const temp = {
-        specifyFlag: questionObj.specifyFlag + i,
+        specifyFlag: answers[i] ? questionObj.specifyFlag + i : "",
         content: answers[i],
         next: null,
       };
@@ -273,7 +273,7 @@ function testDecisionTree() {
   );
 
   decisionNode.edit(decisionNode, editedNode);
-  //writeFileISON(decisionNode);
+  writeFileISON(decisionNode);
   // console.log("Delete Node ===========================================");
   // decisionNode.delete(decisionNode, "01");
   // writeFileISON(decisionNode);
