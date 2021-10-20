@@ -52,7 +52,6 @@ imagesLinkArray.forEach((imageLink, i) => {
 //add active class to first image
 imagesContainer.firstChild.classList.add("carousel__image-active");
 preButton.disabled = true;
-
 //========================================== Handle Event ==================================================//
 
 const imagesList = document.getElementsByClassName("carousel__image-item");
@@ -106,7 +105,7 @@ function nextImage() {
 
 function chooseImage() {
   //get store attribute in image
-  const imgIdx = this.getAttribute("data-idx");
+  const imgIdx = parseInt(this.getAttribute("data-idx"));
   //remove active behavior
   imagesList[index].classList.remove("carousel__image-active");
   mainImagesContainer.style.transform = `translateX(${
@@ -114,6 +113,15 @@ function chooseImage() {
   }px)`;
   //copy index
   index = imgIdx;
+  //disable button when using click image
+  if (index === 0) {
+    preButton.disabled = true;
+  } else if (index === imagesLinkArray.length - 1) {
+    nextButton.disabled = true;
+  } else {
+    preButton.disabled = false;
+    nextButton.disabled = false;
+  }
   //add active behavior
   imagesList[imgIdx].classList.add("carousel__image-active");
 }

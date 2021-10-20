@@ -256,11 +256,11 @@ function testDecisionTree() {
     ["No", "Yes", "Why i have to?"]
   );
 
-  console.log("Add New Node ===========================================");
-  decisionNode.add(decisionNode, nothing1);
-  decisionNode.add(decisionNode, nothing2);
-  decisionNode.add(decisionNode, beginner1);
-  decisionNode.add(decisionNode, beginner2);
+  // console.log("Add New Node ===========================================");
+  // decisionNode.add(decisionNode, nothing1);
+  // decisionNode.add(decisionNode, nothing2);
+  // decisionNode.add(decisionNode, beginner1);
+  // decisionNode.add(decisionNode, beginner2);
   //decisionNode.preOrder(decisionNode);
   //writeFileISON(decisionNode);
   // console.log("Delete Node ===========================================");
@@ -272,8 +272,8 @@ function testDecisionTree() {
     ["OK", "No"]
   );
 
-  decisionNode.edit(decisionNode, editedNode);
-  writeFileISON(decisionNode);
+  // decisionNode.edit(decisionNode, editedNode);
+  // writeFileISON(decisionNode);
   // console.log("Delete Node ===========================================");
   // decisionNode.delete(decisionNode, "01");
   // writeFileISON(decisionNode);

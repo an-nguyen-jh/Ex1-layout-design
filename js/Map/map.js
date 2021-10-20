@@ -1,6 +1,15 @@
 mapboxgl.accessToken =
   "pk.eyJ1IjoiYWR2ZW50ZXIiLCJhIjoiY2t1eHJubjR5MmE4ZTJvcWp3dGJ3MG52ayJ9.xowR6COLlwDH5Lb7gNOx6Q";
 
+function createPopupHTML(title, address, content, link, linkContent) {
+  return `<h3><strong>${title}</strong></h3>
+  <div>
+  <p>Address: ${address}</p>  
+  ${link ? `<a href=${link} target="_blank">${linkContent} </a>` : ""}
+  <p>${content} </p>
+  </div>`;
+}
+
 function addPopupInfoWhenClick(map) {
   map.on("load", () => {
     map.addSource("places", {
@@ -14,13 +23,13 @@ function addPopupInfoWhenClick(map) {
           {
             type: "Feature",
             properties: {
-              description: `<h3><strong>Tan Son Nhat International Airport</strong></h3>
-              <div>
-              <p> Trường Sơn, Phường 2, Tân Bình, Thành phố Hồ Chí Minh, Vietnam</p>  
-              <a href="https://www.vietnamairport.vn/tansonnhatairport/" target="_blank" alt="Go to airport website">vietnamairport.vn</a>
-              <p>Vietnam's biggest airport serves Ho Chi Minh City & has flights to Asia, Europe & Australia.</p> <br>
-              </div>
-                `,
+              description: createPopupHTML(
+                "Tan Son Nhat International Airport",
+                "Trường Sơn, Phường 2, Tân Bình, Thành phố Hồ Chí Minh, Vietnam",
+                "Vietnam's biggest airport serves Ho Chi Minh City & has flights to Asia, Europe & Australia.",
+                "https://www.vietnamairport.vn/tansonnhatairport/",
+                "vietnamairport.vn"
+              ),
               icon: "airport-15",
               title: "Tan Son Nhat International Airport",
             },
@@ -32,12 +41,13 @@ function addPopupInfoWhenClick(map) {
           {
             type: "Feature",
             properties: {
-              description: `<h3.<strong>Tan Son Nhat International Airport</strong></h3>
-              <div>
-              <p> Trường Sơn, Phường 2, Tân Bình, Thành phố Hồ Chí Minh, Vietnam</p>  
-              <a href="https://www.vietnamairport.vn/tansonnhatairport/" target="_blank" alt="Go to airport website">vietnamairport.vn</a>
-              <p>Vietnam's biggest airport serves Ho Chi Minh City & has flights to Asia, Europe & Australia.</p> <br>
-              </div>`,
+              description: createPopupHTML(
+                "Tan Son Nhat International Airport",
+                "Trường Sơn, Phường 2, Tân Bình, Thành phố Hồ Chí Minh, Vietnam",
+                "Vietnam's biggest airport serves Ho Chi Minh City & has flights to Asia, Europe & Australia.",
+                "https://www.vietnamairport.vn/tansonnhatairport/",
+                "vietnamairport.vn"
+              ),
               icon: "airport-15",
               title: "Tan Son Nhat International Airport",
             },
@@ -49,12 +59,12 @@ function addPopupInfoWhenClick(map) {
           {
             type: "Feature",
             properties: {
-              description: `<h3><strong>Independence Palace</strong></h3>
-              <div>
-                <p> Bến Thành, District 1, Ho Chi Minh City, Vietnam</p>
-                <p> also publicly known as Reunification Convention Hall, built on the site of the former Norodom Palace,
-                 is a landmark in Ho Chi Minh City (formerly known as Saigon), Vietnam.</p>
-              </div>`,
+              description: createPopupHTML(
+                "Independence Palace",
+                "Bến Thành, District 1, Ho Chi Minh City, Vietnam",
+                `Publicly known as Reunification Convention Hall, built on the site of the former Norodom Palace,
+                 is a landmark in Ho Chi Minh City (formerly known as Saigon), Vietnam`
+              ),
               icon: "museum-15",
               title: "Independence Palace",
             },
@@ -66,12 +76,13 @@ function addPopupInfoWhenClick(map) {
           {
             type: "Feature",
             properties: {
-              description: `<h3><strong>Phu Tho Stadium</strong></h3>
-              <div>
-              <p>Nhà Thi Đấu Phú Thọ, 1 Lữ Gia, Phường 15, Quận 11, Thành phố Hồ Chí Minh, Vietnam </p>
-                <p> is a multi-purpose indoor arena, located in District 11, Ho Chi Minh City, Vietnam,
-                 within walking distance from the 1932-built Phú Thọ Horse Racing Ground. </p>
-              </div>`,
+              description: createPopupHTML(
+                "Phu Tho Stadium",
+                "Nhà Thi Đấu Phú Thọ, 1 Lữ Gia, Phường 15, Quận 11, Thành phố Hồ Chí Minh, Vietnam",
+                `A multi-purpose indoor arena, located in District 11, Ho
+                    Chi Minh City, Vietnam, within walking distance from the
+                    1932-built Phú Thọ Horse Racing Ground.`
+              ),
               icon: "stadium-15",
               title: "Phu Tho Stadium",
             },
@@ -83,14 +94,16 @@ function addPopupInfoWhenClick(map) {
           {
             type: "Feature",
             properties: {
-              description: `<h3><strong>HCM - University of Science</strong><p></h3>
-              <div>
-              <p>227 Đ. Nguyễn Văn Cừ, Phường 4, Quận 5, Thành phố Hồ Chí Minh, Vietnam </p>
-              <a href="https://www.hcmus.edu.vn/" target="_blank" title="Opens in a new window">Homepage</a> <br>
-                Formerly known as University of Sciences) has been serving as a pioneer in offering various 
+              description: createPopupHTML(
+                "HCM - University of Science",
+                "227 Đ. Nguyễn Văn Cừ, Phường 4, Quận 5, Thành phố Hồ Chí Minh, Vietnam",
+
+                `Formerly known as University of Sciences) has been serving as a pioneer in offering various 
                 scientific degrees across Southern Vietnam since its original establishment as the Indochina College 
-                of Science in 1941.</p>
-              </div>`,
+                of Science in 1941.`,
+                "https://www.hcmus.edu.vn/",
+                "Homepage"
+              ),
               icon: "school-15",
               title: "HCM - University of Science",
             },
@@ -149,6 +162,10 @@ function addPopupInfoWhenClick(map) {
       map.getCanvas().style.cursor = "";
     });
   });
+
+  map.on("click", (e) => {
+    console.log(e.lngLat.wrap());
+  });
 }
 
 const coordinatesGeocoder = function (query) {
@@ -203,7 +220,7 @@ function setupMap(center) {
     container: "map", //ID of container block
     style: "mapbox://styles/mapbox/streets-v11", // style
     center: center, // starting position [longitule, latitude]
-    zoom: 9, // starting zoom(At HCM City, zoom scale: 152.874 - 143.655 meters/pixel)
+    zoom: 11, // starting zoom(At HCM City)
   });
 
   const defautLocation = new mapboxgl.Marker().setLngLat(center).addTo(map);
@@ -212,20 +229,28 @@ function setupMap(center) {
   addPopupInfoWhenClick(map);
 
   // Add the control to the map.
-  map.addControl(
-    new MapboxGeocoder({
-      accessToken: mapboxgl.accessToken,
-      localGeocoder: coordinatesGeocoder,
-      zoom: 4,
-      placeholder: `Try: ${center}`,
-      mapboxgl: mapboxgl,
-      reverseGeocode: true,
-      marker: {
-        color: "orange",
-      },
-    }),
-    "top-left"
-  );
+  const geocoder = new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken,
+    localGeocoder: coordinatesGeocoder,
+    zoom: 15,
+    placeholder: `Search of place in HCM`,
+    bbox: [106.22435, 10.4, 106.98474, 11],
+    proximity: {
+      longitude: 106.6633,
+      latitude: 10.762622,
+    }, // Coordinates of HCM city
+    mapboxgl: mapboxgl,
+    // reverseGeocode: true,
+    country: "VN",
+    marker: {
+      color: "orange",
+    },
+  });
+
+  map.addControl(geocoder, "top-left");
+  // geocoder.on("result", (event) => {
+  //   map.getSource("single-point").setData(event.result.geometry);
+  // });
 }
 
 function successLocation(location) {
