@@ -1,14 +1,14 @@
-// Excrcise1 Given an array of integers, removing duplicate elements and creating an array whose elements are unique.
+// Excrcise1: Given an array of integers, removing duplicate elements and creating an array whose elements are unique.
 // (Eg: [1,2,2,3,4,4,4,5,6] => [1,2,3,4,5,6]). Find 3-4 ways to solve this.
 //Cách 1: Sử dụng set trong js để thực hiện
-// Time Complexity:
+// Time Complexity: O(n)
 // Memory: O(n)
 function removeDuplicateNumv1(array) {
   const result = new Set(array);
   return Array.from(result);
 }
 
-// console.log(removeDuplicateNumv1([1, 2, 2, 3, 4, 4, 4, 5, 6]));
+console.log(removeDuplicateNumv1([1, 2, 2, 3, 4, 4, 4, 5, 6]));
 
 //Cách 2: Sử dụng object trong js để thực hiện,
 //lặp qua array, tìm kiếm key làm phần tử trong js nếu chưa tồn tại thì thêm vào ko thì bỏ qua
@@ -22,13 +22,13 @@ function removeDuplicateNumv2(array) {
       hashTable[num] = num;
     }
   });
-  const result = Object.values(hashTable);
+  const result = Object.keys(hashTable);
   return result;
 }
 
-// console.log(
-//   removeDuplicateNumv2([1, 1, 1, 1, 1, 1, 1, 2, 3, 4, 5, 2, 3, 4, 5, 6])
-// );
+console.log(
+  removeDuplicateNumv2([1, 1, 1, 1, 1, 1, 1, 2, 3, 4, 5, 2, 3, 4, 5, 6])
+);
 //Cách 3: Sử dụng phương thức reduce
 // lặp qua mảng với mỗi phần tử trong arr, tìm xem trong mảng lưu trữ có phần tử đo xuất hiện không
 // nếu không thì thêm vào mảng lưu trữ
@@ -42,7 +42,7 @@ function removeDuplicateNumv3(array) {
     return previousArr;
   }, []);
 }
-// console.log(removeDuplicateNumv3([1, 2, 3, 41, 1, 2, 3, 4, 5, 6]));
+console.log(removeDuplicateNumv3([1, 2, 3, 41, 1, 2, 3, 4, 5, 6]));
 
 //Cách 4: Sử dụng mảng và lặp trog mảng
 //1. nếu mảng chưa được sắp xếp, sắp xếp mảng
@@ -64,12 +64,12 @@ function removeDuplicateNumv4(array) {
   }
   return array.slice(0, idx);
 }
-
-// console.log(removeDuplicateNumv4([1, 1, 2, 1, 3, 4, 3, 5, 5, 6, 7]));
+// i =1 idx: 1 i =2 idx =1
+console.log(removeDuplicateNumv4([1, 1, 2, 3, 4, 3, 5, 5, 6, 7]));
 
 //==============================================Exercise 2===========================================================
 // Given an array of integers, find integers with the most repetitions.
-//If multiple numbers have the same maximum number of repetition, export all of them.
+// If multiple numbers have the same maximum number of repetition, export all of them.
 // Maximum 3 rounds, not nested.
 // Time complexity: O(2n)
 // Memory: O(2n)
@@ -96,7 +96,7 @@ function findMostRepetitionElement(array) {
   return result;
 }
 
-// console.log(findMostRepetitionElement([]));
+console.log(findMostRepetitionElement([1, 1, 1, 2, 2, 2, 3, 4, 3, 5, 5, 6, 7]));
 //==============================================Exercise 3===========================================================
 // Ex 3: Create a decision question tree,
 // the answer of the previous question will affect the appearance of the following question.
@@ -109,18 +109,22 @@ function findMostRepetitionElement(array) {
     content: Nội dung câu trả lời
     next: con trỏ trỏ tới câu hõi tiếp theo
   ]
+  n^n 
+  m log(n) them xoa , lay du lieu, thay doi
 } */
 
 const fs = require("fs");
 class DecisionNode {
   constructor(question, answers) {
     const questionObj = {
-      specifyFlag: question.code,
+      specifyFlag: question.code, //"0"
       content: question.content,
     };
     const answersObj = [];
     for (let i = 0; i < answers.length; i++) {
       const temp = {
+        //ques.specifyFlag + i "01", "02", "03"
+        // subques phải có code "01", "02"
         specifyFlag: answers[i] ? questionObj.specifyFlag + i : "",
         content: answers[i],
         next: null,
@@ -256,13 +260,13 @@ function testDecisionTree() {
     ["No", "Yes", "Why i have to?"]
   );
 
-  // console.log("Add New Node ===========================================");
-  // decisionNode.add(decisionNode, nothing1);
-  // decisionNode.add(decisionNode, nothing2);
-  // decisionNode.add(decisionNode, beginner1);
-  // decisionNode.add(decisionNode, beginner2);
-  //decisionNode.preOrder(decisionNode);
-  //writeFileISON(decisionNode);
+  console.log("Add New Node ===========================================");
+  decisionNode.add(decisionNode, nothing1);
+  decisionNode.add(decisionNode, nothing2);
+  decisionNode.add(decisionNode, beginner1);
+  decisionNode.add(decisionNode, beginner2);
+  decisionNode.preOrder(decisionNode);
+  writeFileISON(decisionNode);
   // console.log("Delete Node ===========================================");
   const editedNode = new DecisionNode(
     {

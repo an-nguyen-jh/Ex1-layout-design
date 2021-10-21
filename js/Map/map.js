@@ -241,7 +241,8 @@ function setupMap(center) {
     }, // Coordinates of HCM city
     mapboxgl: mapboxgl,
     // reverseGeocode: true,
-    country: "VN",
+    countries: "VN",
+    language: "vi",
     marker: {
       color: "orange",
     },

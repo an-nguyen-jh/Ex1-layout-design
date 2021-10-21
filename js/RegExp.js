@@ -19,22 +19,23 @@ const regExpPrototype = {
   password: new RegExp(/^(?=.*[A-Z])(?=.*\d)(?=.*\W)\S{8,}$/, "g"),
   // (?=...) positive lookahead: trùng khớp vs 1 string nếu đoạn mã này theo sau bởi 1 đoạn mả chính xác trong positive lookahead
   //Ex: (?=.*[A-Z]): chọn trùng với tất cả string chứa 1 chữ in hoa
-  //[0-9] | \d: trùng với tất cả ký tự số 1 số
+  //[0-9] | \d: ký tự là số
   // \W+: ít nhất 1 ký tự đặc biệt
   //[A-Z]+ Chứa ít nhất 1 ký tự in hoa
   //{8,}: chứa ít nhất 8 ký tự
   // \S: không chứa khoảng trắng
   //kết hợp tất cả các group positive lookahead ta tạo ra được: trùng với chuỗi sao cho có có ít nhất 1 ... mà vị trí ko quan trọng
 };
+// an.nguyen.sasss@agamil-saas-as.com.vn
 
 function checkMatchedStringByRegExp(str, regExpType) {
   return str.match(regExpPrototype[regExpType]);
 }
 
-console.log(checkMatchedStringByRegExp("asssAaaaa1ssss!", "password"));
-console.log(
-  checkMatchedStringByRegExp(
-    "1712268@student.hcmus.edu.vn tes21t.server-name.test@gm33ail-na1me.com",
-    "email"
-  )
-);
+console.log(checkMatchedStringByRegExp("asssaasas@1A", "password"));
+// console.log(
+//   checkMatchedStringByRegExp(
+//     "1712268@student.hcmus.edu.vn tes21t.server-name.test@gm33ail-na1me.com.uk",
+//     "email"
+//   )
+// );

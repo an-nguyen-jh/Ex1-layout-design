@@ -99,6 +99,7 @@ a {
   padding: 10px;
   overflow-x: auto;
   overflow-y: hidden;
+  scroll-behavior: smooth;
 }
 
 .carousel__image-list::-webkit-scrollbar {

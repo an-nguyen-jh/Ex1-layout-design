@@ -5,6 +5,22 @@ const imagesLinkArray = [
   "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8Mnw0NzMxNTUyfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
   "https://images.unsplash.com/flagged/photo-1573763435095-2077a3fd80b0?ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MTN8NDczMTU1Mnx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
   "https://images.unsplash.com/photo-1573150323599-ac3231efdbc9?ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8NTJ8NDczMTU1Mnx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1568816642854-e5a99030f9af?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1387&q=80",
+  "https://images.unsplash.com/photo-1624798225136-0f618af39bac?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZHVjYXRpJTIwbXVsdGlzdHJhZGF8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1624870420774-8b3b08b7db0f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjR8fGR1Y2F0aSUyMG11bHRpc3RyYWRhfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1624400567110-5f023807720a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjl8fGR1Y2F0aXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1624798223318-1b32138b678c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzN8fGR1Y2F0aXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1545623703-583dd2364bbd?ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8NXw0NzMxNTUyfHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1577737330379-1f82737418ab?ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8N3w0NzMxNTUyfHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1570279402939-62a46724e051?ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MTB8NDczMTU1Mnx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8Mnw0NzMxNTUyfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/flagged/photo-1573763435095-2077a3fd80b0?ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MTN8NDczMTU1Mnx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1573150323599-ac3231efdbc9?ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8NTJ8NDczMTU1Mnx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1568816642854-e5a99030f9af?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1387&q=80",
+  "https://images.unsplash.com/photo-1624798225136-0f618af39bac?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZHVjYXRpJTIwbXVsdGlzdHJhZGF8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1624870420774-8b3b08b7db0f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjR8fGR1Y2F0aSUyMG11bHRpc3RyYWRhfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1624400567110-5f023807720a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjl8fGR1Y2F0aXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1624798223318-1b32138b678c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzN8fGR1Y2F0aXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
 ];
 
 const htmlNodePrototype = {
@@ -25,7 +41,7 @@ const nextButton = document.querySelector(
 );
 
 let index = 0;
-const mainImageWidth = mainImagesContainer.offsetWidth;
+const MAIN_IMG_WIDTH = mainImagesContainer.offsetWidth;
 
 //function to convert html to Node element
 function htmlToElement(html) {
@@ -36,9 +52,6 @@ function htmlToElement(html) {
 }
 //========================================== Generator ==================================================//
 //generator main image & image list
-// const mainImageElm = htmlToElement(
-//   htmlNodePrototype.mainImg(imagesLinkArray[index])
-// );
 
 //create image list and display in bottom of carousel
 imagesLinkArray.forEach((imageLink, i) => {
@@ -49,12 +62,31 @@ imagesLinkArray.forEach((imageLink, i) => {
   imagesContainer.appendChild(imageItem);
   imageItem.addEventListener("click", chooseImage.bind(imageItem));
 });
-//add active class to first image
+
+//add active class to first image & disable preBtn
 imagesContainer.firstChild.classList.add("carousel__image-active");
 preButton.disabled = true;
+
 //========================================== Handle Event ==================================================//
 
 const imagesList = document.getElementsByClassName("carousel__image-item");
+
+function scrollSubImage(
+  imageOffsetLeft,
+  imageOffsetWidth,
+  scrollLeft,
+  containerOffsetLeft
+) {
+  const imageRightOffset =
+    imageOffsetLeft + imageOffsetWidth - containerOffsetLeft;
+  if (imageRightOffset > scrollLeft + MAIN_IMG_WIDTH) {
+    imagesContainer.scrollLeft = imageRightOffset - MAIN_IMG_WIDTH;
+  }
+  if (imageOffsetLeft - containerOffsetLeft < scrollLeft) {
+    imagesContainer.scrollLeft = imageOffsetLeft - containerOffsetLeft;
+  }
+}
+
 //create function to handle navigation Button
 function previousImage() {
   //S1: index equal 0 & and pre button been disable enable image
@@ -68,13 +100,20 @@ function previousImage() {
     index--;
     //change width
     mainImagesContainer.style.transform = `translateX(${
-      -mainImageWidth * index
+      -MAIN_IMG_WIDTH * index
     }px)`;
+
     //add new image
     imagesList[index].classList.add("carousel__image-active");
+    scrollSubImage(
+      imagesList[index].offsetLeft,
+      imagesList[index].offsetWidth,
+      imagesContainer.scrollLeft,
+      imagesContainer.offsetLeft
+    );
   }
   // disable next button
-  else {
+  if (index === 0) {
     preButton.disabled = true;
   }
 }
@@ -92,13 +131,19 @@ function nextImage() {
     index++;
     //change width of container to do to next image
     mainImagesContainer.style.transform = `translateX(${
-      -mainImageWidth * index
+      -MAIN_IMG_WIDTH * index
     }px)`;
     //at active behaviour to image in image list
     imagesList[index].classList.add("carousel__image-active");
+    scrollSubImage(
+      imagesList[index].offsetLeft,
+      imagesList[index].offsetWidth,
+      imagesContainer.scrollLeft,
+      imagesContainer.offsetLeft
+    );
   }
   // disable next button
-  else {
+  if (index === imagesLinkArray.length - 1) {
     nextButton.disabled = true;
   }
 }
@@ -109,16 +154,27 @@ function chooseImage() {
   //remove active behavior
   imagesList[index].classList.remove("carousel__image-active");
   mainImagesContainer.style.transform = `translateX(${
-    -mainImageWidth * imgIdx
+    -MAIN_IMG_WIDTH * imgIdx
   }px)`;
+
+  scrollSubImage(
+    this.offsetLeft,
+    this.offsetWidth,
+    imagesContainer.scrollLeft,
+    imagesContainer.offsetLeft
+  );
+
   //copy index
   index = imgIdx;
   //disable button when using click image
   if (index === 0) {
     preButton.disabled = true;
+    nextButton.disabled = false;
   } else if (index === imagesLinkArray.length - 1) {
     nextButton.disabled = true;
-  } else {
+    preButton.disabled = false;
+  }
+  if (index > 0 && index < imagesLinkArray.length - 1) {
     preButton.disabled = false;
     nextButton.disabled = false;
   }
