@@ -5,9 +5,88 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Banner Repostion</title>
+    <style>
+      *,
+      *::after,
+      *::before {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+      .control-container {
+        height: 80px;
+        width: 100%;
+      }
+      .zoom-scale {
+        text-align: center;
+        padding-top: 10px;
+      }
+      .control-group {
+        display: flex;
+        align-items: center;
+        width: 400px;
+        margin: 0 auto;
+      }
+      .control-group-btn {
+        margin-top: 6px;
+        width: 10%;
+        border: 0;
+        background-color: transparent;
+      }
+      .control-group-range {
+        width: 80%;
+      }
+      .banner-container {
+        height: calc(100vh - 80px);
+        width: 100%;
+        position: relative;
+      }
+      .banner {
+        position: absolute;
+        left: 25%;
+      }
+
+      .banner-image {
+        object-fit: cover;
+        position: absolute;
+        left: 25%;
+        top: 0;
+        border: 2px solid #00c3ff;
+      }
+    </style>
   </head>
   <body>
-    <div></div>
-    <div></div>
+    <div class="control-container">
+      <div id="zoom-num" class="zoom-scale">5</div>
+      <div class="control-group">
+        <button class="control-group-btn">
+          <img src="./zoom-out.svg" alt="zoom out" />
+        </button>
+        <input
+          class="control-group-range"
+          type="range"
+          name="zoom"
+          id="zoom"
+          value="5"
+          min="0"
+          max="10"
+        />
+        <button class="control-group-btn">
+          <img src="./zoom-in.svg" alt="zoom in" />
+        </button>
+      </div>
+    </div>
+    <div class="banner-container" id="banner-container">
+      <img
+        draggable="true"
+        class="banner-image"
+        src="./sky.jpg"
+        alt="banner"
+        id="banner"
+      />
+    </div>
+    <script src="./banner.js"></script>
   </body>
 </html>

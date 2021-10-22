@@ -10,7 +10,9 @@ function createPopupHTML(title, address, content, link, linkContent) {
   </div>`;
 }
 
-function addPopupInfoWhenClick(map) {
+let isGeocoding = true;
+
+function loadMapWithStaticData(map) {
   map.on("load", () => {
     map.addSource("places", {
       // This GeoJSON contains features that include an "icon"
@@ -123,6 +125,7 @@ function addPopupInfoWhenClick(map) {
       layout: {
         "icon-image": "{icon}",
         "icon-allow-overlap": true,
+        "icon-size": 1.5,
         //add lable to marker
         "text-field": ["get", "title"],
         "text-variable-anchor": ["top", "bottom", "left", "right"],
@@ -168,52 +171,52 @@ function addPopupInfoWhenClick(map) {
   });
 }
 
-const coordinatesGeocoder = function (query) {
-  // Match anything which looks like
-  // decimal degrees coordinate pair.
-  const matches = query.match(
-    /^[ ]*(?:Lat: )?(-?\d+\.?\d*)[, ]+(?:Lng: )?(-?\d+\.?\d*)[ ]*$/i
-  );
-  if (!matches) {
-    return null;
-  }
+// const coordinatesGeocoder = function (query) {
+//   // Match anything which looks like
+//   // decimal degrees coordinate pair.
+//   const matches = query.match(
+//     /^[ ]*(?:Lat: )?(-?\d+\.?\d*)[, ]+(?:Lng: )?(-?\d+\.?\d*)[ ]*$/i
+//   );
+//   if (!matches) {
+//     return null;
+//   }
 
-  function coordinateFeature(lng, lat) {
-    return {
-      center: [lng, lat],
-      geometry: {
-        type: "Point",
-        coordinates: [lng, lat],
-      },
-      place_name: "Lat: " + lat + " Lng: " + lng,
-      place_type: ["coordinate"],
-      properties: {},
-      type: "Feature",
-    };
-  }
+//   function coordinateFeature(lng, lat) {
+//     return {
+//       center: [lng, lat],
+//       geometry: {
+//         type: "Point",
+//         coordinates: [lng, lat],
+//       },
+//       place_name: "Lat: " + lat + " Lng: " + lng,
+//       place_type: ["coordinate"],
+//       properties: {},
+//       type: "Feature",
+//     };
+//   }
 
-  const coord1 = Number(matches[1]);
-  const coord2 = Number(matches[2]);
-  const geocodes = [];
+//   const coord1 = Number(matches[1]);
+//   const coord2 = Number(matches[2]);
+//   const geocodes = [];
 
-  if (coord1 < -90 || coord1 > 90) {
-    // must be lng, lat
-    geocodes.push(coordinateFeature(coord1, coord2));
-  }
+//   if (coord1 < -90 || coord1 > 90) {
+//     // must be lng, lat
+//     geocodes.push(coordinateFeature(coord1, coord2));
+//   }
 
-  if (coord2 < -90 || coord2 > 90) {
-    // must be lat, lng
-    geocodes.push(coordinateFeature(coord2, coord1));
-  }
+//   if (coord2 < -90 || coord2 > 90) {
+//     // must be lat, lng
+//     geocodes.push(coordinateFeature(coord2, coord1));
+//   }
 
-  if (geocodes.length === 0) {
-    // else could be either lng, lat or lat, lng
-    geocodes.push(coordinateFeature(coord1, coord2));
-    geocodes.push(coordinateFeature(coord2, coord1));
-  }
+//   if (geocodes.length === 0) {
+//     // else could be either lng, lat or lat, lng
+//     geocodes.push(coordinateFeature(coord1, coord2));
+//     geocodes.push(coordinateFeature(coord2, coord1));
+//   }
 
-  return geocodes;
-};
+//   return geocodes;
+// };
 
 function setupMap(center) {
   const map = new mapboxgl.Map({
@@ -226,12 +229,12 @@ function setupMap(center) {
   const defautLocation = new mapboxgl.Marker().setLngLat(center).addTo(map);
   // Add zoom and rotation controls to the map.
   map.addControl(new mapboxgl.NavigationControl(), "bottom-right");
-  addPopupInfoWhenClick(map);
+  loadMapWithStaticData(map);
 
   // Add the control to the map.
   const geocoder = new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
-    localGeocoder: coordinatesGeocoder,
+    //localGeocoder: coordinatesGeocoder,
     zoom: 15,
     placeholder: `Search of place in HCM`,
     bbox: [106.22435, 10.4, 106.98474, 11],
@@ -240,19 +243,50 @@ function setupMap(center) {
       latitude: 10.762622,
     }, // Coordinates of HCM city
     mapboxgl: mapboxgl,
+
     // reverseGeocode: true,
+    //types: Lọc kết quả để chỉ bao gồm một tập hợp con (một hoặc nhiều) loại tính năng có sẵn.
+    //Các tùy chọn là country, region, postcode, district, place, locality, neighborhood, address, and poi. Nhiều tùy chọn có thể được phân tách bằng dấu phẩy
     countries: "VN",
     language: "vi",
     marker: {
       color: "orange",
     },
   });
-
-  map.addControl(geocoder, "top-left");
-  // geocoder.on("result", (event) => {
-  //   map.getSource("single-point").setData(event.result.geometry);
+  // const mapboxDirection = new MapboxDirections({
+  //   accessToken: mapboxgl.accessToken,
+  //   //localGeocoder: coordinatesGeocoder,
+  //   zoom: 15,
+  //   //placeholder: `Search of place in HCM`,
+  //   geocoder: geocoder,
+  //   // bbox: [106.22435, 10.4, 106.98474, 11],
+  //   // countries: "VN",
+  //   language: "vi",
+  //   // proximity: {
+  //   //   longitude: 106.6633,
+  //   //   latitude: 10.762622,
+  //   // }, // Coordinates of HCM city
+  //   mapboxgl: mapboxgl,
   // });
+
+  //document.getElementById("geocoder").appendChild(geocoder.onAdd(map));
 }
+
+function switchMapControl() {
+  const geocoderChild = document.getElementById("map-geocoding");
+  const directionChild = document.getElementById("direction-control");
+  if (isGeocoding) {
+    directionChild.style.display = "none";
+    geocoderChild.style.display = "block";
+  } else {
+    directionChild.style.display = "block";
+    geocoderChild.style.display = "none";
+  }
+  isGeocoding = !isGeocoding;
+  console.log(isGeocoding);
+}
+
+function loadGeocodingResult() {}
 
 function successLocation(location) {
   setupMap([location.coords.longitude, location.coords.latitude]);
