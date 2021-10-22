@@ -13,12 +13,12 @@
     <!-- Mapbox goecoding -->
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
     <!-- Mapbox navigation -->
-    <!-- <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
     <link
       rel="stylesheet"
       href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css"
       type="text/css"
-    /> -->
+    />
     <link rel="stylesheet" href="./map.css" />
   </head>
   <body>
@@ -50,15 +50,13 @@
                   class="mapboxgl-ctrl-geocoder--input"
                   placeholder="Search of place in HCM"
                   aria-label="Search of place in HCM"
+                  autocomplete="off"
                   id="geocoding-search"
                 />
                 <div
                   style="width: 1px; height: 26px; background-color: #acacac"
                 ></div>
-                <button
-                  class="switch-mapbox-cotrol"
-                  onclick="switchMapControl()"
-                >
+                <button class="switch-mapbox-cotrol">
                   <img src="./repeat.svg" alt="switch" />
                 </button>
               </div>
@@ -111,8 +109,12 @@
               </div>
             </div>
           </div>
-          <div id="mapbox-direction" class="mapbox-gl">
-            <div class="" id="direction-control"></div>
+          <div id="mapbox-direction" class="mapbox-direction">
+            <div class="mapbox-direction-wrapper" id="direction-control">
+              <button class="switch-mapbox-cotrol">
+                <img src="./repeat.svg" alt="switch" />
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -15,13 +15,10 @@ let isGeocoding = true;
 const geocoder = new MapboxGeocoder({
   accessToken: mapboxgl.accessToken,
   //localGeocoder: coordinatesGeocoder,
-  zoom: 15,
+  zoom: 14,
   placeholder: `Search of place in HCM`,
   bbox: [106.22435, 10.4, 106.98474, 11],
-  proximity: {
-    longitude: 106.6633,
-    latitude: 10.762622,
-  }, // Coordinates of HCM city
+  proximity: [106.6633, 10.762622], // Coordinates of HCM city
   mapboxgl: mapboxgl,
 
   // reverseGeocode: true,
@@ -202,18 +199,19 @@ function loadMapWithStaticData(map) {
 }
 //control function for map
 
-function switchMapControl() {
+function switchMapControl(marker, direction) {
   const geocoderChild = document.getElementById("map-geocoding");
   const directionChild = document.getElementById("direction-control");
   if (isGeocoding) {
+    directionChild.style.display = "flex";
+    geocoderChild.style.display = "none";
+    marker.remove();
+  } else {
     directionChild.style.display = "none";
     geocoderChild.style.display = "block";
-  } else {
-    directionChild.style.display = "block";
-    geocoderChild.style.display = "none";
+    direction.removeRoutes();
   }
   isGeocoding = !isGeocoding;
-  console.log(isGeocoding);
 }
 
 function debounceGetSuggestLocation(calback, timeOut = 400) {
@@ -228,18 +226,21 @@ function debounceGetSuggestLocation(calback, timeOut = 400) {
   };
 }
 
-async function getSuggestLocation(e, map) {
+async function getSuggestLocation(e, map, mapboxDirection) {
   const searchString = e.target.value.trim();
   const suggestionList = document.getElementById("geocoding-suggestion");
   const options = geocoder.options;
+  //remove waypoint & suggest list
+  mapboxDirection.removeRoutes();
+  suggestionList.textContent = "";
+
   if (searchString !== "") {
-    console.log(searchString);
+    //get suggest list with api
     defaultMarker.remove();
     const query = await fetch(
-      `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchString}.json?country=${options.countries}&bbox=${options.bbox[0]},${options.bbox[1]},${options.bbox[2]},${options.bbox[3]}&proximity=${options.proximity.longitude},${options.proximity.latitude}&access_token=${options.accessToken}`
+      `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchString}.json?country=${options.countries}&bbox=${options.bbox[0]},${options.bbox[1]},${options.bbox[2]},${options.bbox[3]}&access_token=${options.accessToken}`
     );
     const json = await query.json();
-    suggestionList.textContent = "";
     for (const feature of json.features) {
       const suggestion = htmlToElement(`<li>
     <a>
@@ -256,8 +257,8 @@ async function getSuggestLocation(e, map) {
       suggestion.addEventListener("click", () => {
         chooseLocation(feature, suggestionList, map);
       });
-      suggestionList.appendChild(suggestion);
       suggestionList.style.display = "block";
+      suggestionList.appendChild(suggestion);
     }
   }
 }
@@ -289,34 +290,43 @@ function setupMap(center) {
   map.addControl(new mapboxgl.NavigationControl(), "bottom-right");
   loadMapWithStaticData(map);
 
+  const mapboxDirection = new MapboxDirections({
+    accessToken: mapboxgl.accessToken,
+    zoom: 14,
+    geocoder: geocoder.options,
+    steps: true,
+    // bbox: [106.22435, 10.4, 106.98474, 11],
+    // countries: "VN",
+    language: "vi",
+  });
+
+  document
+    .getElementById("direction-control")
+    .appendChild(mapboxDirection.onAdd(map));
+  const directionChild = document.getElementById("direction-control");
+  directionChild.style.display = "none";
+
   const geocodingSearchInput = document.getElementById("geocoding-search");
+
   geocodingSearchInput.addEventListener(
     "keyup",
-    debounceGetSuggestLocation((e) => getSuggestLocation(e, map))
+    debounceGetSuggestLocation((e) =>
+      getSuggestLocation(e, map, mapboxDirection)
+    )
   );
 
   geocodingSearchInput.addEventListener(
     "paste",
-    debounceGetSuggestLocation((e) => getSuggestLocation(e, map))
+    debounceGetSuggestLocation((e) =>
+      getSuggestLocation(e, map, mapboxDirection)
+    )
   );
-
-  // const mapboxDirection = new MapboxDirections({
-  //   accessToken: mapboxgl.accessToken,
-  //   //localGeocoder: coordinatesGeocoder,
-  //   zoom: 15,
-  //   //placeholder: `Search of place in HCM`,
-  //   geocoder: geocoder,
-  //   // bbox: [106.22435, 10.4, 106.98474, 11],
-  //   // countries: "VN",
-  //   language: "vi",
-  //   // proximity: {
-  //   //   longitude: 106.6633,
-  //   //   latitude: 10.762622,
-  //   // }, // Coordinates of HCM city
-  //   mapboxgl: mapboxgl,
-  // });
-
-  //document.getElementById("geocoder").appendChild(geocoder.onAdd(map));
+  // console.log();
+  for (const element of document.querySelectorAll(".switch-mapbox-cotrol")) {
+    element.addEventListener("click", () => {
+      switchMapControl(defaultMarker, mapboxDirection);
+    });
+  }
 }
 
 function successLocation(location) {

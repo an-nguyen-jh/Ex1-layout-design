@@ -62,10 +62,15 @@ body {
 /* .mapboxgl-ctrl-geocoder--input {
   width: 1%;
 } */
-.mapbox-gl {
+.mapbox-direction {
   z-index: 20;
   margin-top: 10px;
   position: relative;
+}
+
+.mapbox-direction-wrapper {
+  display: flex;
+  flex-direction: row-reverse;
 }
 .mapboxgl-popup-close-button {
   display: none;
@@ -112,7 +117,7 @@ body {
   height: 50px;
   color: #404040; /* fallback */
   color: rgba(0, 0, 0, 0.75);
-  padding: 6px 45px;
+  padding: 6px 45px !important;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -279,7 +284,6 @@ body {
   .mapboxgl-ctrl-geocoder {
     font-size: 15px;
     line-height: 20px;
-    max-width: 360px;
   }
   .mapboxgl-ctrl-geocoder .suggestions {
     font-size: 13px;

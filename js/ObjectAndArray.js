@@ -43,6 +43,7 @@ function removeDuplicateNumv3(array) {
   }, []);
 }
 console.log(removeDuplicateNumv3([1, 2, 3, 41, 1, 2, 3, 4, 5, 6]));
+//giảm dô phức tạp O(n)
 
 //Cách 4: Sử dụng mảng và lặp trog mảng
 //1. nếu mảng chưa được sắp xếp, sắp xếp mảng
@@ -71,7 +72,7 @@ console.log(removeDuplicateNumv4([1, 1, 2, 3, 4, 3, 5, 5, 6, 7]));
 // Given an array of integers, find integers with the most repetitions.
 // If multiple numbers have the same maximum number of repetition, export all of them.
 // Maximum 3 rounds, not nested.
-// Time complexity: O(2n)
+// Time complexity: O(2n) 1 vòng lặp
 // Memory: O(2n)
 function findMostRepetitionElement(array) {
   const hashTable = {};
