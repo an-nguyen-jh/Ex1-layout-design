@@ -12,11 +12,6 @@
     />
     <!-- Mapbox goecoding -->
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css"
-      type="text/css"
-    />
     <!-- Mapbox navigation -->
     <!-- <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
     <link
@@ -24,92 +19,7 @@
       href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css"
       type="text/css"
     /> -->
-    <style>
-      body {
-        display: flex;
-        justify-content: center;
-        margin: 0;
-      }
-      .map-container {
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-      }
-      .map-navigation {
-        position: absolute;
-        height: 100vh;
-        margin: 0;
-        min-width: 260px;
-      }
-      .map {
-        width: 100%;
-        height: 100vh;
-        margin: 0;
-      }
-      .switch-mapbox-cotrol {
-        border-radius: 0 5px 5px 0;
-        background-color: #ffffff;
-        border: 0;
-
-        display: inline-block;
-        height: 36px;
-        cursor: pointer;
-        width: 36px;
-      }
-
-      .switch-mapbox-cotrol img {
-        transform: rotate(90deg);
-        width: 20px;
-        height: 20px;
-      }
-      .mapboxgl-popup {
-        max-width: 400px;
-        font: 12px/20px "Helvetica Neue", Arial, Helvetica, sans-serif;
-      }
-
-      .mapbox-geocoding {
-        z-index: 20;
-        margin: 10px 0 0 10px;
-        position: relative;
-      }
-      .mapboxgl-ctrl-geocoder {
-        width: 360px;
-      }
-      .mapboxgl-ctrl-geocoder--input-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      /* .mapboxgl-ctrl-geocoder--input {
-        width: 1%;
-      } */
-      .mapbox-gl {
-        z-index: 20;
-        margin-top: 10px;
-        position: relative;
-      }
-      .mapboxgl-popup-close-button {
-        display: none;
-      }
-      .mapboxgl-popup-content {
-        font: 400 15px/22px "Source Sans Pro", "Helvetica Neue", sans-serif;
-        padding: 0;
-        width: 100%;
-        max-width: 400px;
-      }
-
-      .mapboxgl-popup-content p {
-        margin: 5px 0;
-      }
-      .mapboxgl-popup-content h3 {
-        background-color: rgb(63, 177, 206);
-        padding: 10px;
-        margin: 0;
-      }
-      .mapboxgl-popup-content div {
-        padding: 0 10px 10px;
-      }
-    </style>
+    <link rel="stylesheet" href="./map.css" />
   </head>
   <body>
     <div class="map-container">
@@ -140,6 +50,7 @@
                   class="mapboxgl-ctrl-geocoder--input"
                   placeholder="Search of place in HCM"
                   aria-label="Search of place in HCM"
+                  id="geocoding-search"
                 />
                 <div
                   style="width: 1px; height: 26px; background-color: #acacac"
@@ -152,7 +63,11 @@
                 </button>
               </div>
               <div class="suggestions-wrapper">
-                <ul class="suggestions" style="display: none"></ul>
+                <ul
+                  class="suggestions"
+                  style="display: none"
+                  id="geocoding-suggestion"
+                ></ul>
               </div>
               <div class="mapboxgl-ctrl-geocoder--pin-right">
                 <button
@@ -172,8 +87,9 @@
                     <path
                       d="M3.8 2.5c-.6 0-1.3.7-1.3 1.3 0 .3.2.7.5.8L7.2 9 3 13.2c-.3.3-.5.7-.5 1 0 .6.7 1.3 1.3 1.3.3 0 .7-.2 1-.5L9 10.8l4.2 4.2c.2.3.7.3 1 .3.6 0 1.3-.7 1.3-1.3 0-.3-.2-.7-.3-1l-4.4-4L15 4.6c.3-.2.5-.5.5-.8 0-.7-.7-1.3-1.3-1.3-.3 0-.7.2-1 .3L9 7.1 4.8 2.8c-.3-.1-.7-.3-1-.3z"
                     ></path>
-                  </svg></button
-                ><svg
+                  </svg>
+                </button>
+                <svg
                   class="
                     mapboxgl-ctrl-geocoder--icon
                     mapboxgl-ctrl-geocoder--icon-loading

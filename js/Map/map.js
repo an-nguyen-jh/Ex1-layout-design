@@ -11,12 +11,38 @@ function createPopupHTML(title, address, content, link, linkContent) {
 }
 
 let isGeocoding = true;
+const geocoder = new MapboxGeocoder({
+  accessToken: mapboxgl.accessToken,
+  //localGeocoder: coordinatesGeocoder,
+  zoom: 15,
+  placeholder: `Search of place in HCM`,
+  bbox: [106.22435, 10.4, 106.98474, 11],
+  proximity: {
+    longitude: 106.6633,
+    latitude: 10.762622,
+  }, // Coordinates of HCM city
+  mapboxgl: mapboxgl,
+
+  // reverseGeocode: true,
+  //types: Lọc kết quả để chỉ bao gồm một tập hợp con (một hoặc nhiều) loại tính năng có sẵn.
+  //Các tùy chọn là country, region, postcode, district, place, locality, neighborhood, address, and poi. Nhiều tùy chọn có thể được phân tách bằng dấu phẩy
+  countries: "VN",
+  language: "vi",
+  marker: {
+    color: "orange",
+  },
+});
+function htmlToElement(html) {
+  var template = document.createElement("template");
+  html = html.trim(); // Never return a text node of whitespace as the result
+  template.innerHTML = html;
+  return template.content.firstChild;
+}
 
 function loadMapWithStaticData(map) {
   map.on("load", () => {
     map.addSource("places", {
-      // This GeoJSON contains features that include an "icon"
-      // property. The value of the "icon" property corresponds
+      // This GeoJSON contains features that include an "icon" property. The value of the "icon" property corresponds
       // to an image in the Mapbox Streets style's sprite.
       type: "geojson",
       data: {
@@ -166,57 +192,10 @@ function loadMapWithStaticData(map) {
     });
   });
 
-  map.on("click", (e) => {
-    console.log(e.lngLat.wrap());
-  });
+  // map.on("click", (e) => {
+  //   console.log(e.lngLat.wrap());
+  // });
 }
-
-// const coordinatesGeocoder = function (query) {
-//   // Match anything which looks like
-//   // decimal degrees coordinate pair.
-//   const matches = query.match(
-//     /^[ ]*(?:Lat: )?(-?\d+\.?\d*)[, ]+(?:Lng: )?(-?\d+\.?\d*)[ ]*$/i
-//   );
-//   if (!matches) {
-//     return null;
-//   }
-
-//   function coordinateFeature(lng, lat) {
-//     return {
-//       center: [lng, lat],
-//       geometry: {
-//         type: "Point",
-//         coordinates: [lng, lat],
-//       },
-//       place_name: "Lat: " + lat + " Lng: " + lng,
-//       place_type: ["coordinate"],
-//       properties: {},
-//       type: "Feature",
-//     };
-//   }
-
-//   const coord1 = Number(matches[1]);
-//   const coord2 = Number(matches[2]);
-//   const geocodes = [];
-
-//   if (coord1 < -90 || coord1 > 90) {
-//     // must be lng, lat
-//     geocodes.push(coordinateFeature(coord1, coord2));
-//   }
-
-//   if (coord2 < -90 || coord2 > 90) {
-//     // must be lat, lng
-//     geocodes.push(coordinateFeature(coord2, coord1));
-//   }
-
-//   if (geocodes.length === 0) {
-//     // else could be either lng, lat or lat, lng
-//     geocodes.push(coordinateFeature(coord1, coord2));
-//     geocodes.push(coordinateFeature(coord2, coord1));
-//   }
-
-//   return geocodes;
-// };
 
 function setupMap(center) {
   const map = new mapboxgl.Map({
@@ -232,27 +211,7 @@ function setupMap(center) {
   loadMapWithStaticData(map);
 
   // Add the control to the map.
-  const geocoder = new MapboxGeocoder({
-    accessToken: mapboxgl.accessToken,
-    //localGeocoder: coordinatesGeocoder,
-    zoom: 15,
-    placeholder: `Search of place in HCM`,
-    bbox: [106.22435, 10.4, 106.98474, 11],
-    proximity: {
-      longitude: 106.6633,
-      latitude: 10.762622,
-    }, // Coordinates of HCM city
-    mapboxgl: mapboxgl,
 
-    // reverseGeocode: true,
-    //types: Lọc kết quả để chỉ bao gồm một tập hợp con (một hoặc nhiều) loại tính năng có sẵn.
-    //Các tùy chọn là country, region, postcode, district, place, locality, neighborhood, address, and poi. Nhiều tùy chọn có thể được phân tách bằng dấu phẩy
-    countries: "VN",
-    language: "vi",
-    marker: {
-      color: "orange",
-    },
-  });
   // const mapboxDirection = new MapboxDirections({
   //   accessToken: mapboxgl.accessToken,
   //   //localGeocoder: coordinatesGeocoder,
@@ -271,6 +230,7 @@ function setupMap(center) {
 
   //document.getElementById("geocoder").appendChild(geocoder.onAdd(map));
 }
+//control function for map
 
 function switchMapControl() {
   const geocoderChild = document.getElementById("map-geocoding");
@@ -286,7 +246,47 @@ function switchMapControl() {
   console.log(isGeocoding);
 }
 
-function loadGeocodingResult() {}
+function debounceGetSuggestLocation(calback, timeOut = 400) {
+  let timer;
+  return function (...args) {
+    //clearTimeOut to start new process
+    clearTimeout(timer);
+    //set time debounce
+    timer = setTimeout(() => {
+      calback.apply(this, args);
+    }, timeOut);
+  };
+}
+
+async function getSuggestLocation(e) {
+  const searchString = e.target.value;
+  const suggestionList = document.getElementById("geocoding-suggestion");
+  const options = geocoder.options;
+  const query = await fetch(
+    `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchString}.json?country=${options.countries}&bbox=${options.bbox[0]},${options.bbox[1]},${options.bbox[2]},${options.bbox[3]}&proximity=${options.proximity.longitude},${options.proximity.latitude}&access_token=${options.accessToken}`
+  );
+  const json = await query.json();
+  for (const feature of json.features) {
+    console.log(feature);
+    const suggestion = htmlToElement(`<li>
+    <a>
+      <div class="mapboxgl-ctrl-geocoder--suggestion">
+        <div class="mapboxgl-ctrl-geocoder--suggestion-title">
+          ${feature.text}
+        </div>
+        <div class="mapboxgl-ctrl-geocoder--suggestion-address">
+        ${feature.place_name}
+        </div>
+      </div>
+    </a>
+    </li>`);
+    suggestionList.appendChild(suggestion);
+    suggestionList.style.display = "block";
+  }
+
+  //const data = json.routes[0];
+  // const route = data.geometry.coordinates;
+}
 
 function successLocation(location) {
   setupMap([location.coords.longitude, location.coords.latitude]);
@@ -299,3 +299,14 @@ function errorLocation() {
 navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
   enableHighAccuracy: true,
 });
+
+const searchInput = document.getElementById("geocoding-search");
+searchInput.addEventListener(
+  "keyup",
+  debounceGetSuggestLocation((e) => getSuggestLocation(e))
+);
+
+searchInput.addEventListener(
+  "paste",
+  debounceGetSuggestLocation((e) => getSuggestLocation(e))
+);

@@ -34,7 +34,6 @@ function changeBannerSize() {
 }
 function zoomBannerWithBtn(value) {
   let zoomSize = parseInt(zoomSlide.value) + value;
-  console.log(zoomSize);
   if (zoomSize < 0) {
     zoomSize = 0;
   }
@@ -71,7 +70,6 @@ function handleDraggMove(e) {
     //move banner
 
     point.style.left = `${point.oldLeft + dx}px`;
-
     point.style.top = `${point.oldTop + dy}px`;
   }
 }
