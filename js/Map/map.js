@@ -11,6 +11,7 @@ function createPopupHTML(title, address, content, link, linkContent) {
 }
 
 let isGeocoding = true;
+
 const geocoder = new MapboxGeocoder({
   accessToken: mapboxgl.accessToken,
   //localGeocoder: coordinatesGeocoder,
@@ -32,6 +33,9 @@ const geocoder = new MapboxGeocoder({
     color: "orange",
   },
 });
+//marker in map
+let defaultMarker;
+
 function htmlToElement(html) {
   var template = document.createElement("template");
   html = html.trim(); // Never return a text node of whitespace as the result
@@ -196,40 +200,6 @@ function loadMapWithStaticData(map) {
   //   console.log(e.lngLat.wrap());
   // });
 }
-
-function setupMap(center) {
-  const map = new mapboxgl.Map({
-    container: "map", //ID of container block
-    style: "mapbox://styles/mapbox/streets-v11", // style
-    center: center, // starting position [longitule, latitude]
-    zoom: 11, // starting zoom(At HCM City)
-  });
-
-  const defautLocation = new mapboxgl.Marker().setLngLat(center).addTo(map);
-  // Add zoom and rotation controls to the map.
-  map.addControl(new mapboxgl.NavigationControl(), "bottom-right");
-  loadMapWithStaticData(map);
-
-  // Add the control to the map.
-
-  // const mapboxDirection = new MapboxDirections({
-  //   accessToken: mapboxgl.accessToken,
-  //   //localGeocoder: coordinatesGeocoder,
-  //   zoom: 15,
-  //   //placeholder: `Search of place in HCM`,
-  //   geocoder: geocoder,
-  //   // bbox: [106.22435, 10.4, 106.98474, 11],
-  //   // countries: "VN",
-  //   language: "vi",
-  //   // proximity: {
-  //   //   longitude: 106.6633,
-  //   //   latitude: 10.762622,
-  //   // }, // Coordinates of HCM city
-  //   mapboxgl: mapboxgl,
-  // });
-
-  //document.getElementById("geocoder").appendChild(geocoder.onAdd(map));
-}
 //control function for map
 
 function switchMapControl() {
@@ -258,17 +228,20 @@ function debounceGetSuggestLocation(calback, timeOut = 400) {
   };
 }
 
-async function getSuggestLocation(e) {
-  const searchString = e.target.value;
+async function getSuggestLocation(e, map) {
+  const searchString = e.target.value.trim();
   const suggestionList = document.getElementById("geocoding-suggestion");
   const options = geocoder.options;
-  const query = await fetch(
-    `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchString}.json?country=${options.countries}&bbox=${options.bbox[0]},${options.bbox[1]},${options.bbox[2]},${options.bbox[3]}&proximity=${options.proximity.longitude},${options.proximity.latitude}&access_token=${options.accessToken}`
-  );
-  const json = await query.json();
-  for (const feature of json.features) {
-    console.log(feature);
-    const suggestion = htmlToElement(`<li>
+  if (searchString !== "") {
+    console.log(searchString);
+    defaultMarker.remove();
+    const query = await fetch(
+      `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchString}.json?country=${options.countries}&bbox=${options.bbox[0]},${options.bbox[1]},${options.bbox[2]},${options.bbox[3]}&proximity=${options.proximity.longitude},${options.proximity.latitude}&access_token=${options.accessToken}`
+    );
+    const json = await query.json();
+    suggestionList.textContent = "";
+    for (const feature of json.features) {
+      const suggestion = htmlToElement(`<li>
     <a>
       <div class="mapboxgl-ctrl-geocoder--suggestion">
         <div class="mapboxgl-ctrl-geocoder--suggestion-title">
@@ -280,12 +253,70 @@ async function getSuggestLocation(e) {
       </div>
     </a>
     </li>`);
-    suggestionList.appendChild(suggestion);
-    suggestionList.style.display = "block";
+      suggestion.addEventListener("click", () => {
+        chooseLocation(feature, suggestionList, map);
+      });
+      suggestionList.appendChild(suggestion);
+      suggestionList.style.display = "block";
+    }
   }
+}
 
-  //const data = json.routes[0];
-  // const route = data.geometry.coordinates;
+function chooseLocation(feature, suggestionList, map) {
+  suggestionList.style.display = "none";
+  const target = [feature.center[0], feature.center[1]];
+  document.getElementById("geocoding-search").value = feature.place_name;
+  //map go to location
+  map.flyTo({
+    center: target,
+    zoom: geocoder.options.zoom,
+    bearing: 0,
+    essential: true, // this animation is considered essential with respect to prefers-reduced-motion
+  });
+  defaultMarker = new mapboxgl.Marker().setLngLat(target).addTo(map);
+}
+
+function setupMap(center) {
+  const map = new mapboxgl.Map({
+    container: "map", //ID of container block
+    style: "mapbox://styles/mapbox/streets-v11", // style
+    center: center, // starting position [longitule, latitude]
+    zoom: 11, // starting zoom(At HCM City)
+  });
+
+  defaultMarker = new mapboxgl.Marker().setLngLat(center).addTo(map);
+  // Add zoom and rotation controls to the map.
+  map.addControl(new mapboxgl.NavigationControl(), "bottom-right");
+  loadMapWithStaticData(map);
+
+  const geocodingSearchInput = document.getElementById("geocoding-search");
+  geocodingSearchInput.addEventListener(
+    "keyup",
+    debounceGetSuggestLocation((e) => getSuggestLocation(e, map))
+  );
+
+  geocodingSearchInput.addEventListener(
+    "paste",
+    debounceGetSuggestLocation((e) => getSuggestLocation(e, map))
+  );
+
+  // const mapboxDirection = new MapboxDirections({
+  //   accessToken: mapboxgl.accessToken,
+  //   //localGeocoder: coordinatesGeocoder,
+  //   zoom: 15,
+  //   //placeholder: `Search of place in HCM`,
+  //   geocoder: geocoder,
+  //   // bbox: [106.22435, 10.4, 106.98474, 11],
+  //   // countries: "VN",
+  //   language: "vi",
+  //   // proximity: {
+  //   //   longitude: 106.6633,
+  //   //   latitude: 10.762622,
+  //   // }, // Coordinates of HCM city
+  //   mapboxgl: mapboxgl,
+  // });
+
+  //document.getElementById("geocoder").appendChild(geocoder.onAdd(map));
 }
 
 function successLocation(location) {
@@ -299,14 +330,3 @@ function errorLocation() {
 navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
   enableHighAccuracy: true,
 });
-
-const searchInput = document.getElementById("geocoding-search");
-searchInput.addEventListener(
-  "keyup",
-  debounceGetSuggestLocation((e) => getSuggestLocation(e))
-);
-
-searchInput.addEventListener(
-  "paste",
-  debounceGetSuggestLocation((e) => getSuggestLocation(e))
-);
