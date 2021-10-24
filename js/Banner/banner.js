@@ -8,7 +8,9 @@ const zoomOutBtn = document.querySelector(
 const zoomInBtn = document.querySelector(
   ".control-group .control-group-btn:last-child"
 );
-
+const zoomControlGroup = document.getElementById("zoom-control-group");
+const changeBannerBtn = document.getElementById("change-banner-size-btn");
+const saveChangeBtn = document.getElementById("save-btn");
 let isDragg = false;
 
 const BANNER_WIDTH_PART = window.innerWidth / 10;
@@ -93,10 +95,28 @@ function handleDraggEnd(e) {
   }
 }
 
-banner.addEventListener("mousedown", handleDraggStart);
-banner.addEventListener("mousemove", handleDraggMove);
-banner.addEventListener("mouseup", handleDraggEnd);
+changeBannerBtn.addEventListener("click", function () {
+  this.style.display = "none";
+  zoomControlGroup.style.display = "block";
+  //add event listener
+  banner.addEventListener("mousedown", handleDraggStart);
+  banner.addEventListener("mousemove", handleDraggMove);
+  banner.addEventListener("mouseup", handleDraggEnd);
 
-zoomSlide.addEventListener("change", changeBannerSize);
-zoomInBtn.addEventListener("click", () => zoomBannerWithBtn(1));
-zoomOutBtn.addEventListener("click", () => zoomBannerWithBtn(-1));
+  zoomSlide.addEventListener("change", changeBannerSize);
+  zoomInBtn.addEventListener("click", zoomBannerWithBtn.bind(null, 1));
+  zoomOutBtn.addEventListener("click", () => zoomBannerWithBtn.bind(null, -1));
+});
+
+saveChangeBtn.addEventListener("click", function () {
+  this.style.display = "none";
+  zoomControlGroup.style.display = "none";
+  changeBannerBtn.style.display = "block";
+  banner.removeEventListener("mousedown", handleDraggStart);
+  banner.removeEventListener("mousemove", handleDraggMove);
+  banner.removeEventListener("mouseup", handleDraggEnd);
+
+  zoomSlide.removeEventListener("change", changeBannerSize);
+  zoomInBtn.removeEventListener("click", zoomBannerWithBtn);
+  zoomOutBtn.removeEventListener("click", zoomBannerWithBtn);
+});

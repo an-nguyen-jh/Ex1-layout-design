@@ -8,7 +8,7 @@ function removeDuplicateNumv1(array) {
   return Array.from(result);
 }
 
-console.log(removeDuplicateNumv1([1, 2, 2, 3, 4, 4, 4, 5, 6]));
+// console.log(removeDuplicateNumv1([1, 2, 2, 3, 4, 4, 4, 5, 6]));
 
 //Cách 2: Sử dụng object trong js để thực hiện,
 //lặp qua array, tìm kiếm key làm phần tử trong js nếu chưa tồn tại thì thêm vào ko thì bỏ qua
@@ -26,24 +26,40 @@ function removeDuplicateNumv2(array) {
   return result;
 }
 
-console.log(
-  removeDuplicateNumv2([1, 1, 1, 1, 1, 1, 1, 2, 3, 4, 5, 2, 3, 4, 5, 6])
-);
+// console.log(
+//   removeDuplicateNumv2([1, 1, 1, 1, 1, 1, 1, 2, 3, 4, 5, 2, 3, 4, 5, 6])
+// );
 //Cách 3: Sử dụng phương thức reduce
 // lặp qua mảng với mỗi phần tử trong arr, tìm xem trong mảng lưu trữ có phần tử đo xuất hiện không
 // nếu không thì thêm vào mảng lưu trữ
 //time complexity: O(n^2)
 //Memory: O(n)
-function removeDuplicateNumv3(array) {
-  return array.reduce((previousArr, currentvalue) => {
-    if (previousArr.indexOf(currentvalue) === -1) {
-      previousArr.push(currentvalue);
-    }
-    return previousArr;
-  }, []);
-}
-console.log(removeDuplicateNumv3([1, 2, 3, 41, 1, 2, 3, 4, 5, 6]));
+// function removeDuplicateNumv3(array) {
+//   return array.reduce((previousArr, currentvalue) => {
+//     if (previousArr.indexOf(currentvalue) === -1) {
+//       previousArr.push(currentvalue);
+//     }
+//     return previousArr;
+//   }, []);
+// }
+// console.log(removeDuplicateNumv3([1, 2, 3, 41, 1, 2, 3, 4, 5, 6]));
 //giảm dô phức tạp O(n)
+//Cách 3.1: Sử dụng phương thức reduce kết hợp vs obj or set
+// lặp qua mảng với mỗi phần tử trong arr, lợi dụng đặc tính key của obj để thực hiện xác định các phần tử độc nhất
+//time complexity: O(2n)
+//Memory: O(n)
+function removeDuplicateNumv3(array) {
+  const uniqueObj = array.reduce(
+    (obj, currentvalue) => {
+      obj[currentvalue] = currentvalue; //set.add(currentValue)
+      return obj;
+    },
+    {} /* new Set() */
+  );
+  return Object.values(uniqueObj);
+  //return Array.from(uniqueObj);
+}
+// console.log(removeDuplicateNumv3([1, 2, 3, 41, 1, 2, 3, 4, 5, 6]));
 
 //Cách 4: Sử dụng mảng và lặp trog mảng
 //1. nếu mảng chưa được sắp xếp, sắp xếp mảng
@@ -66,7 +82,7 @@ function removeDuplicateNumv4(array) {
   return array.slice(0, idx);
 }
 // i =1 idx: 1 i =2 idx =1
-console.log(removeDuplicateNumv4([1, 1, 2, 3, 4, 3, 5, 5, 6, 7]));
+// console.log(removeDuplicateNumv4([1, 1, 2, 3, 4, 3, 5, 5, 6, 7]));
 
 //==============================================Exercise 2===========================================================
 // Given an array of integers, find integers with the most repetitions.
@@ -77,24 +93,27 @@ console.log(removeDuplicateNumv4([1, 1, 2, 3, 4, 3, 5, 5, 6, 7]));
 function findMostRepetitionElement(array) {
   const hashTable = {};
   let max = 1;
-  const result = [];
+  let numberOfMostRepetition = 0;
   //lặp qua mảng và tính toán số lần lặp của các thành phần và lưu vào trong server
   for (num of array) {
     if (num in hashTable) {
       hashTable[num]++;
       //tìm số lần hiện diện max
-      max = Math.max(hashTable[num], max);
+      // max = Math.max(hashTable[num], max);
+      if (hashTable[num] > max) {
+        max = hashTable[num];
+        array[0] = num;
+        numberOfMostRepetition = 1;
+      } else if (hashTable[num] === max) {
+        array[numberOfMostRepetition] = num;
+        numberOfMostRepetition++;
+      }
     } else {
       hashTable[num] = 1;
     }
   }
   //lặp qua hashTable và lưu trữ các phần tử có số lần lặp nhiều nhất
-  for (let value in hashTable) {
-    if (hashTable[value] === max) {
-      result.push(parseInt(value));
-    }
-  }
-  return result;
+  return array.splice(0, numberOfMostRepetition);
 }
 
 console.log(findMostRepetitionElement([1, 1, 1, 2, 2, 2, 3, 4, 3, 5, 5, 6, 7]));
@@ -284,4 +303,4 @@ function testDecisionTree() {
   // writeFileISON(decisionNode);
 }
 
-testDecisionTree();
+// testDecisionTree();
