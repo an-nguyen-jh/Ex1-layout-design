@@ -116,7 +116,9 @@ function findMostRepetitionElement(array) {
   return array.splice(0, numberOfMostRepetition);
 }
 
-console.log(findMostRepetitionElement([1, 1, 1, 2, 2, 2, 3, 4, 3, 5, 5, 6, 7]));
+// console.log(
+//   findMostRepetitionElement([1, 1, 5, 6, 1, 2, 2, 2, 3, 4, 3, 5, 5, 6, 7])
+// );
 //==============================================Exercise 3===========================================================
 // Ex 3: Create a decision question tree,
 // the answer of the previous question will affect the appearance of the following question.
@@ -134,112 +136,196 @@ console.log(findMostRepetitionElement([1, 1, 1, 2, 2, 2, 3, 4, 3, 5, 5, 6, 7]));
 } */
 
 const fs = require("fs");
-class DecisionNode {
-  constructor(question, answers) {
-    const questionObj = {
-      specifyFlag: question.code, //"0"
-      content: question.content,
-    };
-    const answersObj = [];
-    for (let i = 0; i < answers.length; i++) {
-      const temp = {
-        //ques.specifyFlag + i "01", "02", "03"
-        // subques phải có code "01", "02"
-        specifyFlag: answers[i] ? questionObj.specifyFlag + i : "",
-        content: answers[i],
-        next: null,
-      };
-      answersObj[i] = temp;
-    }
-    this.question = questionObj;
-    this.answers = answersObj;
+class QuestionNode {
+  constructor(content, flag, answersArr) {
+    this.content = content;
+    this.specifyFlag = flag;
+    this.answers = answersArr;
+    this.next = [];
   }
 
   preOrder(root) {
     if (root === null) {
       return;
     }
-    console.log(root.question);
-    console.log(root.answers);
-    for (const answer of root.answers) {
-      this.preOrder(answer.next);
+    console.log(root.content);
+    for (const nextQues of root.next) {
+      this.preOrder(nextQues);
     }
   }
 
-  add(root, newNode, level = 1) {
-    if (root === null) {
-      return newNode;
+  add(root, newNode) {
+    //không có các câu hỏi phụ
+    if (root.next.length === 0) {
+      root.next.push(newNode);
+      return;
     }
-    for (const answer of root.answers) {
-      //find right path of answer to add new node
-      if (answer.specifyFlag[level] === newNode.question.specifyFlag[level]) {
-        //question.specifyFlag.startWith(newNode.answer.specifyFlag)
-        answer.next = this.add(answer.next, newNode, ++level);
-        break;
-      }
-    }
-    return root;
-  }
 
-  edit(root, editedNode) {
-    let head = root;
-    while (head !== null) {
-      const preNode = head;
-      for (const answer of head.answers) {
-        if (editedNode.question.specifyFlag.startsWith(answer.specifyFlag)) {
-          if (answer.specifyFlag === editedNode.question.specifyFlag) {
-            //if answer.next does not contain any question
-            const oldNode = answer.next;
-            if (oldNode === null) {
-              answer.next = editedNode;
-            }
-            //attach every sub question in to new Node
-            console.log(editedNode.answers.length);
-            for (let i = 0; i < editedNode.answers.length; i++) {
-              if (
-                oldNode.answers[i] &&
-                oldNode.answers[i].specifyFlag ===
-                  editedNode.answers[i].specifyFlag
-              ) {
-                editedNode.answers[i].next = oldNode.answers[i].next;
-              }
-            }
-            // console.log(oldNode, editedNode);
-            // attach new edited node to tree
-            answer.next = editedNode;
-          } else {
-            head = answer.next;
-          }
-          break;
-        }
-      }
-      //check of specifyFlag is valid
-      if (head === preNode) {
-        break;
-      }
+    // console.log(newNode);
+    if (root.specifyFlag === newNode.specifyFlag) {
+      return root;
     }
-  }
-
-  delete(root, specifyFlag) {
-    let head = root;
-    while (head !== null) {
-      const preNode = head;
-      for (const answer of head.answers) {
-        if (specifyFlag.startsWith(answer.specifyFlag)) {
-          if (answer.specifyFlag === specifyFlag) {
-            answer.next = null;
-          } else {
-            head = answer.next;
-          }
-          break;
-        }
+    for (const nextQues of root.next) {
+      if (nextQues.specifyFlag.length === newNode.specifyFlag.length) {
+        root.next.push(newNode);
+        return;
       }
-      if (head === preNode) {
-        break;
+      if (newNode.specifyFlag.startsWith(nextQues.specifyFlag)) {
+        this.add(nextQues, newNode);
+        return;
       }
     }
   }
 }
+class AnswerNode {
+  constructor(content, flag) {
+    this.content = content;
+    this.specifYFlag = flag;
+  }
+}
+
+class DecisionTree {
+  constructor() {
+    this.questions = null;
+    this.answers = null;
+  }
+
+  addQuestion(newQues) {
+    let root = this.questions;
+    if (root === null) {
+      this.questions = newQues;
+    } else {
+      root.add(root, newQues);
+    }
+  }
+
+  preOrderQuestion() {
+    const root = this.questions;
+    root.preOrder(root);
+  }
+
+  addAnswer(answer) {
+    this.answers = {
+      ...this.answers,
+      ...answer,
+    };
+  }
+
+  getAnswer(flag) {
+    return this.answers[flag];
+  }
+
+  getAnswerList() {
+    console.log(this.answers);
+  }
+}
+
+// class DecisionNode {
+//   constructor(question, answers) {
+//     const questionObj = {
+//       specifyFlag: question.code, //"0"
+//       content: question.content,
+//     };
+//     const answersObj = [];
+//     for (let i = 0; i < answers.length; i++) {
+//       const temp = {
+//         //ques.specifyFlag + i "01", "02", "03"
+//         // subques phải có code "01", "02"
+//         specifyFlag: answers[i] ? questionObj.specifyFlag + i : "",
+//         content: answers[i],
+//         next: null,
+//       };
+//       answersObj[i] = temp;
+//     }
+//     this.question = questionObj;
+//     this.answers = answersObj;
+//   }
+
+//   preOrder(root) {
+//     if (root === null) {
+//       return;
+//     }
+//     console.log(root.question);
+//     console.log(root.answers);
+//     for (const answer of root.answers) {
+//       this.preOrder(answer.next);
+//     }
+//   }
+
+//   add(root, newNode, level = 1) {
+//     if (root === null) {
+//       return newNode;
+//     }
+//     for (const answer of root.answers) {
+//       //find right path of answer to add new node
+//       if (answer.specifyFlag[level] === newNode.question.specifyFlag[level]) {
+//         //question.specifyFlag.startWith(newNode.answer.specifyFlag)
+//         answer.next = this.add(answer.next, newNode, ++level);
+//         break;
+//       }
+//     }
+//     return root;
+//   }
+
+//   edit(root, editedNode) {
+//     let head = root;
+//     while (head !== null) {
+//       const preNode = head;
+//       for (const answer of head.answers) {
+//         if (editedNode.question.specifyFlag.startsWith(answer.specifyFlag)) {
+//           if (answer.specifyFlag === editedNode.question.specifyFlag) {
+//             //if answer.next does not contain any question
+//             const oldNode = answer.next;
+//             if (oldNode === null) {
+//               answer.next = editedNode;
+//             }
+//             //attach every sub question in to new Node
+//             console.log(editedNode.answers.length);
+//             for (let i = 0; i < editedNode.answers.length; i++) {
+//               if (
+//                 oldNode.answers[i] &&
+//                 oldNode.answers[i].specifyFlag ===
+//                   editedNode.answers[i].specifyFlag
+//               ) {
+//                 editedNode.answers[i].next = oldNode.answers[i].next;
+//               }
+//             }
+//             // console.log(oldNode, editedNode);
+//             // attach new edited node to tree
+//             answer.next = editedNode;
+//           } else {
+//             head = answer.next;
+//           }
+//           break;
+//         }
+//       }
+//       //check of specifyFlag is valid
+//       if (head === preNode) {
+//         break;
+//       }
+//     }
+//   }
+
+//   delete(root, specifyFlag) {
+//     let head = root;
+//     while (head !== null) {
+//       const preNode = head;
+//       for (const answer of head.answers) {
+//         if (specifyFlag.startsWith(answer.specifyFlag)) {
+//           if (answer.specifyFlag === specifyFlag) {
+//             answer.next = null;
+//           } else {
+//             head = answer.next;
+//           }
+//           break;
+//         }
+//       }
+//       if (head === preNode) {
+//         break;
+//       }
+//     }
+//   }
+// }
 
 function writeFileISON(obj) {
   return fs.writeFile("test.json", JSON.stringify(obj), function (err) {
@@ -251,56 +337,45 @@ function writeFileISON(obj) {
 }
 
 function testDecisionTree() {
-  let decisionNode = new DecisionNode(
-    {
-      code: "0",
-      content:
-        "Let's start learning path, please, self assessment your javascript's level",
-    },
-    ["Know nothing", "Beginner", "Intermediate", "Advanced"]
+  const newQues1 = new QuestionNode(
+    "Let's start learning path, please, self assessment your javascript's level",
+    "0",
+    []
   );
+  const nothing1 = new QuestionNode(
+    "Let's start our basic learning path",
+    "00",
+    []
+  );
+  const nothing2 = new QuestionNode(
+    "Did you pass basic learning path?",
+    "001",
+    []
+  );
+  const beginner1 = new QuestionNode(
+    "Would you start basic learning path?",
+    "01",
+    []
+  );
+  const beginner2 = new QuestionNode(
+    "Would you like to take a small test to check your knowledge?",
+    "011",
+    []
+  );
+  const newAns1 = { "01": "0K" };
+  const decisionTree = new DecisionTree();
 
-  const nothing1 = new DecisionNode(
-    { code: "00", content: "Let's start our basic learning path" },
-    ["Ok", "Cancel", "Explain basic learning path ?"]
-  );
-  const nothing2 = new DecisionNode(
-    { code: "000", content: "Did you pass basic learning path?" },
-    ["No, I didn't", "I am finished"]
-  );
-  const beginner1 = new DecisionNode(
-    { code: "01", content: "Would you start basic learning path?" },
-    ["OK", "NO", "Let switch to Intermediate learning path"]
-  );
-  const beginner2 = new DecisionNode(
-    {
-      code: "011",
-      content: "Would you like to take a small test to check your knowledge?",
-    },
-    ["No", "Yes", "Why i have to?"]
-  );
+  decisionTree.addQuestion(newQues1);
+  decisionTree.addQuestion(nothing1);
+  decisionTree.addQuestion(nothing2);
+  decisionTree.addQuestion(beginner1);
+  decisionTree.addQuestion(beginner2);
 
-  console.log("Add New Node ===========================================");
-  decisionNode.add(decisionNode, nothing1);
-  decisionNode.add(decisionNode, nothing2);
-  decisionNode.add(decisionNode, beginner1);
-  decisionNode.add(decisionNode, beginner2);
-  decisionNode.preOrder(decisionNode);
-  writeFileISON(decisionNode);
-  // console.log("Delete Node ===========================================");
-  const editedNode = new DecisionNode(
-    {
-      code: "01",
-      content: "Would you start beginner learning path?",
-    },
-    ["OK", "No"]
-  );
+  //decisionTree.preOrderQuestion();
 
-  // decisionNode.edit(decisionNode, editedNode);
-  // writeFileISON(decisionNode);
-  // console.log("Delete Node ===========================================");
-  // decisionNode.delete(decisionNode, "01");
-  // writeFileISON(decisionNode);
+  decisionTree.addAnswer(newAns1);
+
+  decisionTree.getAnswerList();
 }
 
-// testDecisionTree();
+testDecisionTree();
