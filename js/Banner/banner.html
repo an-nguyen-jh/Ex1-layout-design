@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Banner Repostion</title>
     <style>
-      *,
+      /* *,
       *::after,
       *::before {
         box-sizing: border-box;
-      }
+      } */
       :root {
         --primaryColor: #00c3ff;
       }
@@ -72,6 +72,9 @@
         width: 90%;
         position: relative;
         margin: auto;
+        border: 4px dashed #00c3ff;
+        /* background-clip: padding-box; */
+        background-repeat: no-repeat;
       }
       .banner {
         position: absolute;
@@ -105,7 +108,7 @@
             id="zoom"
             value="5"
             min="0"
-            max="10"
+            max="15"
           />
           <button class="control-group-btn">
             <img src="./zoom-in.svg" alt="zoom in" />
@@ -114,15 +117,7 @@
         <button class="change-banner-size-btn" id="save-btn">Save</button>
       </div>
     </div>
-    <div class="banner-container" id="banner-container">
-      <img
-        draggable="true"
-        class="banner-image"
-        src="./sky.jpg"
-        alt="banner"
-        id="banner"
-      />
-    </div>
-    <script src="./banner.js"></script>
+    <div class="banner-container" id="banner-container"></div>
+    <script src="./banner.js" async></script>
   </body>
 </html>

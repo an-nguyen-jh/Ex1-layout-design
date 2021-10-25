@@ -49,17 +49,25 @@ function removeDuplicateNumv2(array) {
 //time complexity: O(2n)
 //Memory: O(n)
 function removeDuplicateNumv3(array) {
-  const uniqueObj = array.reduce(
+  return array.reduce(
     (obj, currentvalue) => {
-      obj[currentvalue] = currentvalue; //set.add(currentValue)
+      if (!(currentvalue in obj.hash)) {
+        obj.unique.push(currentvalue);
+      }
+      obj.hash[currentvalue] = currentvalue; //set.add(currentValue)
       return obj;
     },
-    {} /* new Set() */
-  );
-  return Object.values(uniqueObj);
-  //return Array.from(uniqueObj);
+    {
+      hash: {},
+      unique: [],
+    }
+  ).unique;
 }
-// console.log(removeDuplicateNumv3([1, 2, 3, 41, 1, 2, 3, 4, 5, 6]));
+// console.log(
+//   removeDuplicateNumv3([
+//     1, 2, 3, 41, 1, 2, 2, 3, 4, 1, 2, 4, 6, 7, 2, 3, 4, 5, 6,
+//   ])
+// );
 
 //Cách 4: Sử dụng mảng và lặp trog mảng
 //1. nếu mảng chưa được sắp xếp, sắp xếp mảng
@@ -91,34 +99,32 @@ function removeDuplicateNumv4(array) {
 // Time complexity: O(2n) 1 vòng lặp
 // Memory: O(2n)
 function findMostRepetitionElement(array) {
-  const hashTable = {};
-  let max = 1;
-  let numberOfMostRepetition = 0;
-  //lặp qua mảng và tính toán số lần lặp của các thành phần và lưu vào trong server
-  for (num of array) {
-    if (num in hashTable) {
-      hashTable[num]++;
-      //tìm số lần hiện diện max
-      // max = Math.max(hashTable[num], max);
-      if (hashTable[num] > max) {
-        max = hashTable[num];
-        array[0] = num;
-        numberOfMostRepetition = 1;
-      } else if (hashTable[num] === max) {
-        array[numberOfMostRepetition] = num;
-        numberOfMostRepetition++;
+  return array.reduce(
+    (store, currVal) => {
+      if (currVal in store.hash) {
+        store.hash[currVal]++;
+        if (store.hash[currVal] > store.max) {
+          store.max = store.hash[currVal];
+          store.unique = [currVal];
+        } else if (store.hash[currVal] === store.max) {
+          store.unique.push(currVal);
+        }
+      } else {
+        store.hash[currVal] = 1;
       }
-    } else {
-      hashTable[num] = 1;
+      return store;
+    },
+    {
+      hash: {},
+      unique: [],
+      max: 0,
     }
-  }
-  //lặp qua hashTable và lưu trữ các phần tử có số lần lặp nhiều nhất
-  return array.splice(0, numberOfMostRepetition);
+  ).unique;
 }
 
-// console.log(
-//   findMostRepetitionElement([1, 1, 5, 6, 1, 2, 2, 2, 3, 4, 3, 5, 5, 6, 7])
-// );
+console.log(
+  findMostRepetitionElement([1, 1, 5, 6, 1, 2, 2, 2, 3, 4, 3, 5, 5, 6, 7])
+);
 //==============================================Exercise 3===========================================================
 // Ex 3: Create a decision question tree,
 // the answer of the previous question will affect the appearance of the following question.
@@ -136,6 +142,7 @@ function findMostRepetitionElement(array) {
 } */
 
 const fs = require("fs");
+const { Stream } = require("stream");
 class QuestionNode {
   constructor(content, flag, answersArr) {
     this.content = content;
