@@ -10,14 +10,80 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
+    <header class="header">
+      <div class="header__menu" id="menu-btn">
+        <img
+          src="./public/icons/menu.svg"
+          alt="header menu"
+          class="header__menu__icon"
+        />
+      </div>
+      <div class="header-nav" id="header-menu">
+        <img
+          src="./public/icons/mail.svg"
+          alt="mail box"
+          class="header__menu__mail header__menu__icon"
+        />
+      </div>
+    </header>
     <!-- red masthead secion -->
     <main class="masthead-section">
-      <header class="header"><h3>Start-Up Resources</h3></header>
+      <div class="section-heading">
+        <div class="section-heading__content">
+          <img
+            src="./public/icons/arrow.svg"
+            alt="expand"
+            class="section-heading__content__chevron-btn small-chevron"
+          />
+          paint the power
+          <span>blar robar</span>
+        </div>
+      </div>
+      <div class="section__info-container">
+        <div class="section__info-main-info">
+          <div class="masthead-section__title-wrapper">
+            <h1 class="masthead-section__title">
+              PAINT
+              <p class="masthead-section__title__under-text">your</p>
+              PIXTURE
+            </h1>
+          </div>
+          <div class="masthead-section__content-wrapper">
+            <div
+              class="masthead-section__content-col masthead-section__content"
+            >
+              <h3>Humble beginnings</h3>
+              <img
+                class="masthead-section__content__expand"
+                src="./public/icons/threeDotsB.svg"
+                alt="expand"
+              />
+              <p class="section__info-masthead-paragraph">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
+                aliquid corrupti suscipit similique cumque.
+              </p>
+            </div>
+            <div class="masthead-section__date">
+              <img
+                src="./public/icons/arrow.svg"
+                alt="next"
+                class="masthead-section__date-chevron small-chevron"
+              />
+              <p class="smallest-text">April 19th 2016</p>
+            </div>
+          </div>
+          <img
+            class="masthead-section__expand"
+            src="./public/icons/threeDotsB.svg"
+            alt="expand"
+          />
+        </div>
+      </div>
     </main>
     <!-- picture collection scroll secion -->
     <section class="scroll picture-container"></section>
