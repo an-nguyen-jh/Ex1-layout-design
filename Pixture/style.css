@@ -9,14 +9,18 @@
   --primaryBgColor: #15032a;
   --secondaryBgColor: #f5f5f5;
   --whiteColor: #ffffff;
-  --primaryTitleColor: #0c2539;
+  --blackColor: #000000;
   --secondaryTiltleColor: #0d4363;
   --primaryTextColor: #d6d6d6;
   --secondaryTextColor: #b5bbc4;
   --footerBgColor: #140328;
   --darkFooterTextColor: #5c5b61;
+  --cardBorderColor: #e5e5e5;
+  --cardTitleColor: #0c2539;
   --cardTextColor: #677278;
   --sectionTitleWidth: 50px;
+  --sectionContentLeftPadding: 20px;
+  --sectionMarginBottom: 30px;
   --animationSpeed: 0.25s;
 }
 
@@ -31,6 +35,7 @@ h3,
 p {
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
+  color: var(--whiteColor);
 }
 
 h1 {
@@ -40,11 +45,20 @@ h1 {
   line-height: 0.75;
 }
 
+h2 {
+  margin: 0 0 10px;
+  font-size: 1.75rem;
+  line-height: 1.5;
+}
+
 h3 {
   margin: 0 0 10px;
   font-size: 1.5rem;
   line-height: 1.1;
 }
+/* h4 {
+  font-size: 1.15rem;
+} */
 a {
   color: inherit;
   text-decoration: none;
@@ -65,6 +79,7 @@ a {
 @media only screen and (min-width: 1024px) {
   :root {
     --sectionTitleWidth: 70px;
+    --sectionContentLeftPadding: 80px;
   }
   h1 {
     font-size: 6.5rem;
@@ -72,6 +87,10 @@ a {
   }
 }
 @media only screen and (min-width: 1280px) {
+  :root {
+    --sectionTitleWidth: 70px;
+    --sectionContentLeftPadding: 105px;
+  }
 }
 /* =============================== header ======================================================== */
 .header {
@@ -133,6 +152,7 @@ a {
 /* =============================== masthead-secion =============================================== */
 .masthead-section {
   height: 140vh;
+  margin-bottom: var(--sectionMarginBottom);
   max-height: 1000px;
   width: 100%;
   position: relative;
@@ -182,7 +202,7 @@ a {
 }
 
 .section__info-main-info {
-  padding-left: 20px;
+  padding-left: var(--sectionContentLeftPadding);
   width: 95%;
 }
 
@@ -266,9 +286,9 @@ a {
     transform-origin: center;
   }
 
-  .section__info-main-info {
-    padding-left: 60px;
-  }
+  /* .section__info-main-info {
+    padding-left: var(--sectionContentLeftPadding);
+  } */
 
   .masthead-section__title__under-text {
     border: 5px solid var(--whiteColor);
@@ -309,7 +329,6 @@ a {
   }
 
   .masthead-section__content {
-    padding-left: 40px;
     position: relative;
   }
   .masthead-section__date {
@@ -328,13 +347,154 @@ a {
   }
 }
 
-/* =============================== masthead-secion =============================================== */
+/* =============================== picture-scroll-section =============================================== */
+.picture-section {
+  margin-bottom: var(--sectionMarginBottom);
+}
+.scroll__title {
+  font-size: 18px;
+  display: none;
+  margin-bottom: 28px;
+  padding-left: calc(
+    var(--sectionContentLeftPadding) + var(--sectionTitleWidth)
+  );
+  text-transform: uppercase;
+}
+.scroll-group {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 8fr 1fr;
+  grid-template-rows: auto;
+}
+.scroll-container {
+  width: 100%;
+  height: 450px;
+  display: flex;
+  flex-direction: row-reverse;
+  overflow: hidden;
+  overflow-y: hidden;
+  transition: transform var(--animationSpeed);
+}
+
+.scroll__card {
+  display: grid;
+  width: 320px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 60px;
+  margin: 0 10px;
+  flex-shrink: 0;
+  background-color: var(--whiteColor);
+}
+
+.scroll__card__head {
+  width: 100%;
+  position: relative;
+  border-top: 1px solid var(--cardBorderColor);
+  border-left: 1px solid var(--cardBorderColor);
+  border-right: 1px solid var(--cardBorderColor);
+}
+
+.scroll__card__head-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.scroll__card__cut-in {
+  position: absolute;
+  left: -16px;
+  width: 25px;
+  height: 25px;
+  bottom: -13px;
+  transform: rotate(45deg);
+  background: linear-gradient(
+    18deg,
+    var(--primaryBgColor) 77%,
+    var(--blackColor) 30%
+  );
+}
+
+.scroll__card__favorite {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  color: var(--whiteColor);
+}
+.scroll__card__favorite__img {
+  height: 13px;
+}
+.scroll__card__body {
+  padding: 25px;
+}
+
+.scroll__card__body__title {
+  color: var(--cardTitleColor);
+}
+
+.scroll__card__body__paragraph {
+  color: var(--cardTextColor);
+  line-height: 2;
+}
+
+.scroll__card__footer {
+  border-top: 1px solid var(--cardBorderColor);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.scroll__card__footer__comment {
+  display: flex;
+  justify-content: center;
+}
+
+.scroll__card__footer__comment__img {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  margin: 0 15px 0 25px;
+}
+
+.scroll__card__footer-expand {
+  background-color: var(--cardBorderColor);
+  height: 100%;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll__card__footer-expand img {
+  width: 20px;
+  height: 20px;
+}
+
+.scroll__navigation {
+  height: 100%;
+  padding: 40px 80px;
+  display: none;
+}
+
+.scroll__navigation-img {
+  transform: translate(0, -40%);
+  position: relative;
+  top: 40%;
+  width: 20px;
+}
 
 @media only screen and (min-width: 768px) {
 }
+
 @media only screen and (min-width: 1024px) {
+  .scroll__title {
+    display: block;
+  }
+  .scroll__navigation {
+    display: block;
+  }
 }
 @media only screen and (min-width: 1280px) {
+  /* .scroll__card {
+    grid-template-rows: 1fr 1fr 90px;
+  } */
 }
 
 /* =============================== masthead-secion =============================================== */

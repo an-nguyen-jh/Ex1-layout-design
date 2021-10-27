@@ -1,15 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="645.42" height="795.48" viewBox="0 0 645.42 795.48">
-  <defs>
-    <clipPath id="clip-path">
-      <rect id="Rectangle_6" data-name="Rectangle 6" width="645.42" height="795.48" transform="translate(1779.84 1518.53)" fill="#fff"/>
-    </clipPath>
-  </defs>
-  <g id="Rectangle_6-2" data-name="Rectangle 6" transform="translate(-1779.84 -1518.53)">
-    <rect id="Rectangle_6-3" data-name="Rectangle 6" width="645.42" height="795.48" transform="translate(1779.84 1518.53)" fill="#fff"/>
-    <g id="Clip" clip-path="url(#clip-path)">
-      <rect id="More" width="120.91" height="110.72" transform="translate(2306.05 2206.69)" fill="#f5f5f5"/>
-      <rect id="Rectangle_8" data-name="Rectangle 8" width="774.84" height="1.7" transform="translate(1764.51 2206.69)" fill="#f5f5f5"/>
-      <rect id="Rectangle_9" data-name="Rectangle 9" width="1.7" height="139.68" transform="translate(2071.04 2208.4)" fill="#f5f5f5"/>
-    </g>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="43" height="10" viewBox="0 0 43 10">
+  <path id="Shape_9" data-name="Shape 9" d="M2399.84,1374a5,5,0,1,1,5.16-5A5.082,5.082,0,0,1,2399.84,1374Zm-16.34,0a5,5,0,1,1,5.16-5A5.082,5.082,0,0,1,2383.5,1374Zm-16.34,0a5,5,0,1,1,5.16-5A5.082,5.082,0,0,1,2367.16,1374Z" transform="translate(-2362 -1364)" fill="#fff"/>
 </svg>
