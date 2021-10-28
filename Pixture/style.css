@@ -421,6 +421,7 @@ a {
 .scroll-group {
   width: 100%;
   display: grid;
+  overflow: hidden;
   grid-template-rows: auto;
 }
 .scroll-container {
@@ -428,10 +429,11 @@ a {
   height: 450px;
   display: flex;
   flex-direction: row-reverse;
-  overflow-y: hidden;
+  overflow: auto;
   scroll-behavior: smooth;
   transition: transform var(--animationSpeed);
 }
+
 .scroll-container::-webkit-scrollbar {
   height: 10px;
 }

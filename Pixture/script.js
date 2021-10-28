@@ -22,7 +22,7 @@ function scrollCardList(scrollElm, scrollWidth) {
     translateLen = scrollWidth - SCROLL_CONTAINER_WIDTH;
   }
 
-  scrollElm.scrollLeft = -(scrollElm.scrollLeft + translateLen);
+  scrollElm.scrollLeft = scrollElm.scrollLeft - translateLen;
 }
 
 menuBtn.addEventListener("click", toggleMenu);
