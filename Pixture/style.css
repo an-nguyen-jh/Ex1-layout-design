@@ -82,6 +82,11 @@ a {
   :root {
     --sectionContentLeftPadding: 50px;
   }
+  h1 {
+    font-size: 6.5rem;
+    letter-spacing: -0.5rem;
+    line-height: 0.75;
+  }
 }
 @media only screen and (min-width: 1024px) {
   :root {
@@ -125,6 +130,13 @@ a {
 .header__menu__icon {
   width: 32px;
   height: 32px;
+  cursor: pointer;
+  transition: transform var(--animationSpeed) linear;
+}
+
+.header__menu__icon:hover,
+.header__menu__icon:focus {
+  transform: scale(1.2);
 }
 .header-nav {
   width: 0;
@@ -167,15 +179,11 @@ a {
   width: 100%;
   position: relative;
   display: flex;
-  background-image: url("./public/pictures/mastHeadBg.png");
-  background-position: bottom left;
-  background-size: cover;
 }
 
 .section-heading {
   width: var(--sectionTitleWidth);
   color: var(--whiteColor, #ffffff);
-  background-color: var(--primaryBgColor);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -209,6 +217,12 @@ a {
   display: flex;
   align-items: center;
   color: white;
+}
+
+.masthead-bg {
+  background-image: url("./public/pictures/mastHeadBg.png");
+  background-position: bottom left;
+  background-size: cover;
 }
 
 .section__info-main-info {
@@ -263,9 +277,10 @@ a {
   bottom: 40px;
   right: 20px;
   width: 28px;
+  cursor: pointer;
 }
 
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 360px) {
   .masthead-section__title {
     font-size: 4rem;
   }
@@ -276,6 +291,9 @@ a {
 @media only screen and (min-width: 1024px) {
   .masthead-section {
     height: 95vh;
+  }
+
+  .masthead-bg {
     background-image: linear-gradient(65deg, transparent 65%, #bc76ff 140%),
       url("./public/pictures/mastHeadBg.png");
   }
@@ -356,7 +374,37 @@ a {
     font-size: 2rem;
   }
 }
+/* =============================== under background image section ======================================== */
+.under-bg-section {
+  position: absolute;
+  z-index: -2;
+  height: 100vh;
+  max-height: 1200px;
+  background: url("./public/pictures/deepBg.png");
+  background-size: contain;
+  background-position: top right;
+  background-repeat: no-repeat;
+  width: 100%;
+  margin-top: -15vh;
+  display: none;
+}
 
+.under-bg-section-left {
+  background-position: top left -30%;
+  margin-top: -40vh;
+  height: 130vh;
+}
+
+@media only screen and (min-width: 1024px) {
+  .under-bg-section {
+    display: block;
+  }
+}
+@media only screen and (min-width: 1920px) {
+  .under-bg-section {
+    background-size: 150%;
+  }
+}
 /* =============================== picture-scroll-section =============================================== */
 .picture-section {
   margin-bottom: var(--sectionMarginBottom);
@@ -380,7 +428,6 @@ a {
   height: 450px;
   display: flex;
   flex-direction: row-reverse;
-  justify-content: center;
   overflow-x: auto;
   overflow-y: hidden;
   transition: transform var(--animationSpeed);
@@ -463,16 +510,17 @@ a {
   margin: 0 15px 0 25px;
 }
 
-.scroll__card__footer-expand {
+.scroll__card__footer__expand {
   background-color: var(--cardBorderColor);
   height: 100%;
   width: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
-.scroll__card__footer-expand img {
+.scroll__card__footer__expand img {
   width: 20px;
   height: 20px;
 }
@@ -513,6 +561,12 @@ a {
   } */
 }
 
+@media only screen and(min-width: 1920px) {
+  .scroll-container {
+    justify-content: center;
+  }
+}
+
 /* =============================== submasthead-secion =============================================== */
 .sub-masthead-section {
   margin-bottom: var(--sectionMarginBottom);
@@ -521,11 +575,13 @@ a {
   width: 100%;
   position: relative;
   display: flex;
+}
+
+.sub-masthead-bg {
   background-image: url("./public/pictures/submastHeadBg.png");
   background-position: bottom left;
   background-size: cover;
 }
-
 .section-heading--hidden {
   display: none;
 }
@@ -578,7 +634,7 @@ a {
   text-align: center;
 }
 
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 360px) {
   .sub-masthead-section__title {
     font-size: 4rem;
   }
@@ -717,6 +773,10 @@ a {
   .content-section__sub-col {
     width: 25%;
   }
+  .content-section__info-container {
+    padding-top: var(--sectionTitleWidth);
+    padding-bottom: var(--sectionTitleWidth);
+  }
 }
 
 /* =============================== creadit-secion =============================================== */
@@ -806,11 +866,52 @@ a {
 
 .footer__content-group {
   display: flex;
-  align-items: center;
+  margin-bottom: var(--sectionMarginBottom);
+}
+
+.footer__content-about,
+.footer__content-history {
+  padding-right: 30px;
+}
+
+.footer__content-contact {
+  display: none;
+}
+
+.footer__content-list {
+  list-style-type: none;
+  color: var(--whiteColor, #ffffff);
+  height: 13.5ch;
+  overflow: hidden;
+}
+
+.footer__content-list li {
+  line-height: 1.75;
+}
+.footer__content-list a {
+  border-bottom: 1px solid transparent;
+  transition: border-bottom var(--animationSpeed) ease-in-out;
+  cursor: pointer;
+}
+.footer__content-list a:hover {
+  border-bottom: 1px solid var(--whiteColor);
+}
+
+.footer__content-about {
+  width: 75%;
 }
 
 .footer__content-title {
   color: var(--footerTiltleColor);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.footer__content-paragraph {
+  line-height: 1.75;
+  font-weight: 500;
+  height: 16ch;
+  overflow: hidden;
 }
 
 .footer-text {
@@ -822,10 +923,13 @@ a {
 }
 
 @media only screen and (min-width: 768px) {
+  .footer__content-about {
+    width: 50%;
+  }
 }
 @media only screen and (min-width: 1024px) {
   .footer {
-    width: 70%;
+    width: 100%;
     padding-left: calc(
       var(--sectionContentLeftPadding) + var(--sectionTitleWidth)
     );
@@ -833,6 +937,27 @@ a {
   .footer-text {
     height: 3ch;
   }
+  .footer__content-list {
+    height: 100%;
+  }
+  .footer__content-contact {
+    display: block;
+  }
+  .footer__content-about {
+    width: 40%;
+  }
+  .footer__content-history {
+    width: 30%;
+  }
 }
 @media only screen and (min-width: 1280px) {
+  .footer {
+    width: 60%;
+    padding-right: 0;
+  }
+
+  .footer__content-about,
+  .footer__content-history {
+    padding-right: 20px;
+  }
 }
