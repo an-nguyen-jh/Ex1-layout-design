@@ -10,7 +10,7 @@
   --secondaryBgColor: #f5f5f5;
   --whiteColor: #ffffff;
   --blackColor: #000000;
-  --secondaryTiltleColor: #0d4363;
+  --footerTiltleColor: #0d4363;
   --primaryTextColor: #d6d6d6;
   --secondaryTextColor: #b5bbc4;
   --footerBgColor: #140328;
@@ -40,7 +40,7 @@ p {
 
 h1 {
   margin: 0 0 40px 0;
-  font-size: 5.5rem;
+  font-size: 5.75rem;
   letter-spacing: -0.5rem;
   line-height: 0.75;
 }
@@ -74,12 +74,22 @@ a {
   height: 10px;
 }
 
+.primary-color {
+  color: var(--cardTitleColor);
+}
+
 @media only screen and (min-width: 768px) {
+  :root {
+    --sectionContentLeftPadding: 50px;
+  }
 }
 @media only screen and (min-width: 1024px) {
   :root {
     --sectionTitleWidth: 70px;
     --sectionContentLeftPadding: 80px;
+  }
+  html {
+    font-size: 14px;
   }
   h1 {
     font-size: 6.5rem;
@@ -164,7 +174,6 @@ a {
 
 .section-heading {
   width: var(--sectionTitleWidth);
-  height: 101%;
   color: var(--whiteColor, #ffffff);
   background-color: var(--primaryBgColor);
   display: flex;
@@ -271,7 +280,7 @@ a {
       url("./public/pictures/mastHeadBg.png");
   }
 
-  .section-heading__content {
+  .bottom-25 {
     bottom: 25%;
   }
 
@@ -364,7 +373,6 @@ a {
 .scroll-group {
   width: 100%;
   display: grid;
-  grid-template-columns: 8fr 1fr;
   grid-template-rows: auto;
 }
 .scroll-container {
@@ -372,6 +380,7 @@ a {
   height: 450px;
   display: flex;
   flex-direction: row-reverse;
+  justify-content: center;
   overflow-x: auto;
   overflow-y: hidden;
   transition: transform var(--animationSpeed);
@@ -379,7 +388,7 @@ a {
 
 .scroll__card {
   display: grid;
-  width: 320px;
+  width: 365px;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr 60px;
   margin: 0 10px;
@@ -491,6 +500,9 @@ a {
   .scroll-container {
     overflow-x: hidden;
   }
+  .scroll-group {
+    grid-template-columns: 8fr 1fr;
+  }
   .scroll__navigation {
     display: block;
   }
@@ -504,7 +516,8 @@ a {
 /* =============================== submasthead-secion =============================================== */
 .sub-masthead-section {
   margin-bottom: var(--sectionMarginBottom);
-  height: 120vh;
+  height: 105vh;
+  max-height: 950px;
   width: 100%;
   position: relative;
   display: flex;
@@ -513,7 +526,7 @@ a {
   background-size: cover;
 }
 
-.sub-masthead__heading {
+.section-heading--hidden {
   display: none;
 }
 
@@ -559,6 +572,9 @@ a {
 
 .sub-masthead-section__content {
   margin-bottom: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
 }
 
@@ -574,7 +590,7 @@ a {
   .sub-masthead-section {
     height: 95vh;
   }
-  .sub-masthead__heading {
+  .section-heading--hidden {
     display: flex;
   }
   .sub-masthead__info {
@@ -582,6 +598,7 @@ a {
   }
   .sub-masthead-section__content {
     text-align: left;
+    justify-content: space-between;
   }
   .sub-masthead-section__title {
     max-width: 500px;
@@ -604,50 +621,175 @@ a {
   }
 }
 
-/* =============================== scroll-container =============================================== */
+/* =============================== content-container =============================================== */
+.content-section {
+  margin-bottom: var(--sectionMarginBottom);
+  width: 100%;
+  position: relative;
+  display: flex;
+  height: 100%;
+}
+
+.content-section__heading__content {
+  transform: rotate(-90deg);
+  font-size: 0.75rem;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  position: absolute;
+  width: 130px;
+}
+
+.content-section__heading__content span {
+  color: var(--secondaryTextColor);
+  font-size: 0.625rem;
+  margin-left: 5px;
+}
+
+.content-section__info-container {
+  width: 100%;
+  max-width: 1400px;
+  padding: calc(var(--sectionTitleWidth) - var(--sectionMarginBottom))
+    var(--sectionContentLeftPadding);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.content-section__info {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.content-section__col {
+  width: 100%;
+}
+
+.content-section__paragraph {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.content-section__sub-col {
+  width: 100%;
+  padding: 0 0 30px;
+}
+
+.content-section__sub-col:first-child {
+  padding-left: 0;
+}
+
+.content-section__sub-col:last-child {
+  padding-bottom: 0;
+}
+
+.content-section__resource__title {
+  font-weight: 700;
+}
+.content-section__resouce__info {
+  line-height: 2;
+}
 
 @media only screen and (min-width: 768px) {
-}
-@media only screen and (min-width: 1024px) {
-}
-@media only screen and (min-width: 1280px) {
-}
-
-/* =============================== picture-secion =============================================== */
-
-@media only screen and (min-width: 768px) {
-}
-@media only screen and (min-width: 1024px) {
-}
-@media only screen and (min-width: 1280px) {
-}
-
-/* =============================== sub-masthead-secion =============================================== */
-
-@media only screen and (min-width: 768px) {
-}
-@media only screen and (min-width: 1024px) {
-}
-@media only screen and (min-width: 1280px) {
-}
-
-/* =============================== article-secion =============================================== */
-.article-container {
-  display: none;
-}
-@media only screen and (min-width: 768px) {
-  .article-container {
-    display: block;
+  .content-section__sub-col {
+    width: 50%;
+    padding-right: 10px;
+  }
+  .content-section__sub-col:nth-last-child(2) {
+    padding-bottom: 0;
   }
 }
 @media only screen and (min-width: 1024px) {
+  .content-section__info {
+    width: calc(100vw - var(--sectionTitleWidth));
+  }
+  .content-section__col {
+    width: 50%;
+    padding-right: 10px;
+  }
+
+  .content-section__sub-col {
+    padding: 0 10px 30px;
+  }
+  .content-section__paragraph {
+    font-size: 0.8rem;
+  }
 }
 @media only screen and (min-width: 1280px) {
+  .content-section__sub-col {
+    width: 25%;
+  }
 }
 
-/* =============================== credit-secion =============================================== */
+/* =============================== creadit-secion =============================================== */
+.credit-section {
+  height: 66vh;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  position: relative;
+  background-image: linear-gradient(
+      115deg,
+      transparent 10%,
+      var(--primaryBgColor) 80%
+    ),
+    url("./public/pictures/creditBg.png");
+  background-position: bottom left;
+  background-size: cover;
+}
 
+.credit-section__info {
+  margin-bottom: 60px;
+  width: 400px;
+  padding-left: var(--sectionContentLeftPadding);
+}
+
+.credit-section__info__sub-title {
+  font-size: 1.75rem;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+}
+
+.credit-section__info__title {
+  font-size: 4rem;
+  line-height: 0.8;
+  font-weight: 500;
+  padding-bottom: 20px;
+  margin: 0;
+}
 @media only screen and (min-width: 768px) {
+}
+@media only screen and (min-width: 1024px) {
+  .credit-section {
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .credit-section__info {
+    margin-bottom: 60px;
+    width: 600px;
+    padding-left: 0;
+    padding-right: var(--sectionContentLeftPadding);
+  }
+  .credit-section__info__sub-title {
+    font-size: 1.25rem;
+  }
+  .credit-section__info__title {
+    font-size: 2.75rem;
+  }
+}
+@media only screen and (min-width: 1280px) {
+  .credit-section__info {
+    padding-right: calc(var(--sectionContentLeftPadding) * 2);
+  }
+}
+
+/* =============================== article-secion =============================================== */
+.article-section {
+  display: none;
+  margin-bottom: var(--sectionMarginBottom);
+}
+@media only screen and (min-width: 768px) {
+  .article-section {
+    display: block;
+  }
 }
 @media only screen and (min-width: 1024px) {
 }
@@ -657,10 +799,40 @@ a {
 /* =============================== footer-secion =============================================== */
 .footer {
   background-color: var(--footerBgColor);
+  padding: var(--sectionContentLeftPadding);
+
+  margin-bottom: var(--sectionMarginBottom);
 }
+
+.footer__content-group {
+  display: flex;
+  align-items: center;
+}
+
+.footer__content-title {
+  color: var(--footerTiltleColor);
+}
+
+.footer-text {
+  font-size: 0.75rem;
+  line-height: 1.75;
+  color: var(--darkFooterTextColor);
+  height: 10ch;
+  overflow: hidden;
+}
+
 @media only screen and (min-width: 768px) {
 }
 @media only screen and (min-width: 1024px) {
+  .footer {
+    width: 70%;
+    padding-left: calc(
+      var(--sectionContentLeftPadding) + var(--sectionTitleWidth)
+    );
+  }
+  .footer-text {
+    height: 3ch;
+  }
 }
 @media only screen and (min-width: 1280px) {
 }
