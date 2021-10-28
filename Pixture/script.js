@@ -22,7 +22,36 @@ function scrollCardList(scrollElm, scrollWidth) {
     translateLen = scrollWidth - SCROLL_CONTAINER_WIDTH;
   }
 
-  scrollElm.scrollLeft = scrollElm.scrollLeft - translateLen;
+  scrollElm.scrollLeft = Math.floor(scrollElm.scrollLeft - translateLen);
+  console.log(scrollElm.scrollLeft);
+}
+
+function handleDragStart(e) {
+  e.preventDefault();
+  this.isDown = true;
+  //postion to calc change px when dragg
+  this.style.cursor = "grabbing";
+  this.style.userSelect = "none";
+  this.mouseOldX = e.pageX;
+  this.addEventListener("mousemove", handleDragMove);
+  this.addEventListener("mouseup", handleDragEnd);
+  this.addEventListener("mouseleave", handleDragEnd);
+}
+
+function handleDragMove(e) {
+  e.preventDefault();
+  if (!this.isDown) return;
+
+  const dx = e.pageX - this.mouseOldX;
+  this.scrollLeft -= Math.floor(dx * 2);
+  console.log(this.scrollLeft);
+}
+
+function handleDragEnd(e) {
+  this.isDown = false;
+  e.preventDefault();
+  this.style.cursor = "grab";
+  this.style.removeProperty("user-select");
 }
 
 menuBtn.addEventListener("click", toggleMenu);
@@ -33,3 +62,13 @@ pictureNav.addEventListener("click", function () {
 articleNav.addEventListener("click", function () {
   scrollCardList(articles, ARTICLES_SCROLL_WIDTH);
 });
+
+articles.addEventListener("mousedown", handleDragStart);
+articles.addEventListener("mousemove", handleDragMove);
+articles.addEventListener("mouseup", handleDragEnd);
+articles.addEventListener("mouseleave", handleDragEnd);
+
+pictures.addEventListener("mousedown", handleDragStart);
+pictures.addEventListener("mousemove", handleDragMove);
+pictures.addEventListener("mouseup", handleDragEnd);
+pictures.addEventListener("mouseleave", handleDragEnd);

@@ -429,7 +429,9 @@ a {
   height: 450px;
   display: flex;
   flex-direction: row-reverse;
-  overflow: auto;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  cursor: grab;
   scroll-behavior: smooth;
   transition: transform var(--animationSpeed);
 }
