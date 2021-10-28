@@ -390,7 +390,7 @@ a {
 }
 
 .under-bg-section-left {
-  background-position: top left -30%;
+  background-position: top left -75%;
   margin-top: -40vh;
   height: 130vh;
 }
@@ -428,9 +428,22 @@ a {
   height: 450px;
   display: flex;
   flex-direction: row-reverse;
-  overflow-x: auto;
   overflow-y: hidden;
+  scroll-behavior: smooth;
   transition: transform var(--animationSpeed);
+}
+.scroll-container::-webkit-scrollbar {
+  height: 10px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background-color: var(--primaryBgColor);
+  border-radius: 6px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  background-color: var(--secondaryBgColor);
 }
 
 .scroll__card {
@@ -536,6 +549,7 @@ a {
   position: relative;
   top: 40%;
   width: 20px;
+  cursor: pointer;
 }
 
 @media only screen and (min-width: 768px) {
@@ -545,9 +559,9 @@ a {
   .scroll__title {
     display: block;
   }
-  .scroll-container {
+  /* .scroll-container {
     overflow-x: hidden;
-  }
+  } */
   .scroll-group {
     grid-template-columns: 8fr 1fr;
   }
