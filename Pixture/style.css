@@ -27,6 +27,7 @@
 body {
   font-family: "Montserrat", sans-serif;
   background-color: var(--primaryBgColor);
+  scroll-behavior: smooth;
 }
 
 h1,
@@ -198,12 +199,18 @@ a {
   text-transform: uppercase;
   position: absolute;
   width: 320px;
+  height: var(--sectionTitleWidth);
+  display: flex;
+  align-items: center;
 }
 
 .section-heading__content__chevron-btn {
   transform: rotate(-180deg) translateX(50px);
   margin-left: 40px;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  height: var(--sectionTitleWidth);
 }
 
 .section-heading__content span {
@@ -224,7 +231,6 @@ a {
   background-image: url("./public/pictures/mastHeadBg.png");
   background-position: bottom left;
   background-size: cover;
-  backdrop-filter: brightness(0.1);
 }
 
 .section__info-main-info {
@@ -296,7 +302,7 @@ a {
   }
 
   .masthead-bg {
-    background-image: linear-gradient(65deg, transparent 65%, #bc76ff 140%),
+    background-image: linear-gradient(75deg, transparent 65%, #bc76ff 170%),
       url("./public/pictures/mastHeadBg.png");
   }
 
@@ -569,11 +575,11 @@ a {
   } */
 }
 
-@media only screen and (min-width: 1920px) {
+/* @media only screen and (min-width: 1920px) {
   .scroll-container {
     justify-content: center;
   }
-}
+} */
 
 /* =============================== submasthead-secion =============================================== */
 .sub-masthead-section {
