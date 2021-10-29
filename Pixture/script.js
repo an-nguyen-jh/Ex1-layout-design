@@ -4,6 +4,7 @@ const pictureNav = document.getElementById("picture-nav");
 const articleNav = document.getElementById("article-nav");
 const pictures = document.querySelector(".picture-section .scroll-container");
 const articles = document.querySelector(".article-section .scroll-container");
+const header = document.getElementsByClassName("header")[0];
 
 const PICTURES_SCROLL_WIDTH = pictures.scrollWidth;
 const ARTICLES_SCROLL_WIDTH = articles.scrollWidth;
@@ -14,6 +15,7 @@ const CARD_WIDTH = document.querySelector(".scroll__card").offsetWidth;
 function toggleMenu() {
   const collapseNav = document.getElementById("header-menu");
   collapseNav.classList.toggle("toggle");
+  header.classList.toggle("toggle");
 }
 
 function scrollCardList(scrollElm, scrollWidth) {
@@ -23,7 +25,6 @@ function scrollCardList(scrollElm, scrollWidth) {
   }
 
   scrollElm.scrollLeft = Math.floor(scrollElm.scrollLeft - translateLen);
-  console.log(scrollElm.scrollLeft);
 }
 
 function handleDragStart(e) {
@@ -33,9 +34,6 @@ function handleDragStart(e) {
   this.style.cursor = "grabbing";
   this.style.userSelect = "none";
   this.mouseOldX = e.pageX;
-  this.addEventListener("mousemove", handleDragMove);
-  this.addEventListener("mouseup", handleDragEnd);
-  this.addEventListener("mouseleave", handleDragEnd);
 }
 
 function handleDragMove(e) {
@@ -44,7 +42,6 @@ function handleDragMove(e) {
 
   const dx = e.pageX - this.mouseOldX;
   this.scrollLeft -= Math.floor(dx * 2);
-  console.log(this.scrollLeft);
 }
 
 function handleDragEnd(e) {

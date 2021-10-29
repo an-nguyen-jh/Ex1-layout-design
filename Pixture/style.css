@@ -223,6 +223,7 @@ a {
   background-image: url("./public/pictures/mastHeadBg.png");
   background-position: bottom left;
   background-size: cover;
+  backdrop-filter: brightness(0.1);
 }
 
 .section__info-main-info {
@@ -390,7 +391,7 @@ a {
 }
 
 .under-bg-section-left {
-  background-position: top left -75%;
+  background-position: top left -65%;
   margin-top: -40vh;
   height: 130vh;
 }
@@ -478,7 +479,7 @@ a {
   left: -16px;
   width: 25px;
   height: 25px;
-  bottom: -13px;
+  bottom: -12px;
   transform: rotate(45deg);
   background: linear-gradient(
     18deg,
@@ -579,7 +580,7 @@ a {
   } */
 }
 
-@media only screen and(min-width: 1920px) {
+@media only screen and (min-width: 1920px) {
   .scroll-container {
     justify-content: center;
   }
